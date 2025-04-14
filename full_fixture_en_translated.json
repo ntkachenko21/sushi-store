@@ -1,0 +1,769 @@
+[
+  {
+    "model": "product.ingredient",
+    "pk": 1,
+    "fields": {
+      "name": "Salmon",
+      "is_allergen": true
+    }
+  },
+  {
+    "model": "product.ingredient",
+    "pk": 2,
+    "fields": {
+      "name": "Avocado",
+      "is_allergen": false
+    }
+  },
+  {
+    "model": "product.ingredient",
+    "pk": 3,
+    "fields": {
+      "name": "Cream Cheese",
+      "is_allergen": true
+    }
+  },
+  {
+    "model": "product.ingredient",
+    "pk": 4,
+    "fields": {
+      "name": "Shrimp Tempura",
+      "is_allergen": true
+    }
+  },
+  {
+    "model": "product.ingredient",
+    "pk": 5,
+    "fields": {
+      "name": "Tuna",
+      "is_allergen": true
+    }
+  },
+  {
+    "model": "product.ingredient",
+    "pk": 6,
+    "fields": {
+      "name": "Cucumber",
+      "is_allergen": false
+    }
+  },
+  {
+    "model": "product.ingredient",
+    "pk": 7,
+    "fields": {
+      "name": "Unagi Eel",
+      "is_allergen": true
+    }
+  },
+  {
+    "model": "product.ingredient",
+    "pk": 8,
+    "fields": {
+      "name": "Flying Fish Roe",
+      "is_allergen": true
+    }
+  },
+  {
+    "model": "product.ingredient",
+    "pk": 9,
+    "fields": {
+      "name": "Mango",
+      "is_allergen": false
+    }
+  },
+  {
+    "model": "product.ingredient",
+    "pk": 10,
+    "fields": {
+      "name": "Kanpyo",
+      "is_allergen": false
+    }
+  },
+  {
+    "model": "product.ingredient",
+    "pk": 11,
+    "fields": {
+      "name": "Sesame",
+      "is_allergen": true
+    }
+  },
+  {
+    "model": "product.ingredient",
+    "pk": 12,
+    "fields": {
+      "name": "Rice",
+      "is_allergen": false
+    }
+  },
+  {
+    "model": "product.ingredient",
+    "pk": 13,
+    "fields": {
+      "name": "Nori",
+      "is_allergen": false
+    }
+  },
+  {
+    "model": "product.ingredient",
+    "pk": 14,
+    "fields": {
+      "name": "Surimi",
+      "is_allergen": true
+    }
+  },
+  {
+    "model": "product.ingredient",
+    "pk": 15,
+    "fields": {
+      "name": "Teriyaki Sauce",
+      "is_allergen": true
+    }
+  },
+  {
+    "model": "product.ingredient",
+    "pk": 16,
+    "fields": {
+      "name": "Spicy Sauce",
+      "is_allergen": true
+    }
+  },
+  {
+    "model": "product.ingredient",
+    "pk": 17,
+    "fields": {
+      "name": "Truffle Sauce",
+      "is_allergen": true
+    }
+  },
+  {
+    "model": "product.ingredient",
+    "pk": 18,
+    "fields": {
+      "name": "Tamago",
+      "is_allergen": true
+    }
+  },
+  {
+    "model": "product.ingredient",
+    "pk": 19,
+    "fields": {
+      "name": "Mayonnaise",
+      "is_allergen": true
+    }
+  },
+  {
+    "model": "product.ingredient",
+    "pk": 20,
+    "fields": {
+      "name": "Wakame",
+      "is_allergen": false
+    }
+  },
+  {
+    "model": "product.ingredient",
+    "pk": 21,
+    "fields": {
+      "name": "Fried Onion",
+      "is_allergen": true
+    }
+  },
+  {
+    "model": "product.ingredient",
+    "pk": 22,
+    "fields": {
+      "name": "Panko",
+      "is_allergen": true
+    }
+  },
+  {
+    "model": "product.ingredient",
+    "pk": 23,
+    "fields": {
+      "name": "Mozzarella",
+      "is_allergen": true
+    }
+  },
+  {
+    "model": "product.ingredient",
+    "pk": 24,
+    "fields": {
+      "name": "Tofu",
+      "is_allergen": false
+    }
+  },
+  {
+    "model": "product.ingredient",
+    "pk": 25,
+    "fields": {
+      "name": "Jalapeno",
+      "is_allergen": false
+    }
+  },
+  {
+    "model": "product.ingredient",
+    "pk": 26,
+    "fields": {
+      "name": "Soy Sauce",
+      "is_allergen": false
+    }
+  },
+  {
+    "model": "product.category",
+    "pk": 1,
+    "fields": {
+      "title": "Special Edition"
+    }
+  },
+  {
+    "model": "product.category",
+    "pk": 2,
+    "fields": {
+      "title": "Sushi-Dogs and Burgers"
+    }
+  },
+  {
+    "model": "product.category",
+    "pk": 3,
+    "fields": {
+      "title": "Philadelphia"
+    }
+  },
+  {
+    "model": "product.category",
+    "pk": 4,
+    "fields": {
+      "title": "California"
+    }
+  },
+  {
+    "model": "product.category",
+    "pk": 5,
+    "fields": {
+      "title": "Tempura Roll"
+    }
+  },
+  {
+    "model": "product.category",
+    "pk": 6,
+    "fields": {
+      "title": "Baked Rolls"
+    }
+  },
+  {
+    "model": "product.category",
+    "pk": 7,
+    "fields": {
+      "title": "Deluxe"
+    }
+  },
+  {
+    "model": "product.category",
+    "pk": 8,
+    "fields": {
+      "title": "Dragons"
+    }
+  },
+  {
+    "model": "product.category",
+    "pk": 9,
+    "fields": {
+      "title": "Panko"
+    }
+  },
+  {
+    "model": "product.category",
+    "pk": 10,
+    "fields": {
+      "title": "Futomaki"
+    }
+  },
+  {
+    "model": "product.category",
+    "pk": 11,
+    "fields": {
+      "title": "Hosomaki and Nigiri"
+    }
+  },
+  {
+    "model": "product.category",
+    "pk": 12,
+    "fields": {
+      "title": "Gunkans"
+    }
+  },
+  {
+    "model": "product.category",
+    "pk": 13,
+    "fields": {
+      "title": "Sets"
+    }
+  },
+  {
+    "model": "product.category",
+    "pk": 14,
+    "fields": {
+      "title": "Wok Dishes"
+    }
+  },
+  {
+    "model": "product.category",
+    "pk": 15,
+    "fields": {
+      "title": "Salads"
+    }
+  },
+  {
+    "model": "product.category",
+    "pk": 16,
+    "fields": {
+      "title": "Appetizers"
+    }
+  },
+  {
+    "model": "product.category",
+    "pk": 17,
+    "fields": {
+      "title": "Extras"
+    }
+  },
+  {
+    "model": "product.category",
+    "pk": 18,
+    "fields": {
+      "title": "Drinks"
+    }
+  },
+  {
+    "model": "product.product",
+    "pk": 1,
+    "fields": {
+      "title": "Double Deluxe",
+      "price": "56.00",
+      "image": null,
+      "weight": 320,
+      "category": 1,
+      "ingredients": [
+        12,
+        13,
+        1,
+        4,
+        17
+      ]
+    }
+  },
+  {
+    "model": "product.product",
+    "pk": 2,
+    "fields": {
+      "title": "Satori Deluxe",
+      "price": "56.00",
+      "image": null,
+      "weight": 320,
+      "category": 1,
+      "ingredients": [
+        12,
+        13,
+        3,
+        1,
+        4,
+        8,
+        9,
+        7
+      ]
+    }
+  },
+  {
+    "model": "product.product",
+    "pk": 3,
+    "fields": {
+      "title": "Kawasaki Deluxe",
+      "price": "53.00",
+      "image": null,
+      "weight": 340,
+      "category": 1,
+      "ingredients": [
+        12,
+        13,
+        3,
+        2,
+        4,
+        5,
+        10,
+        6,
+        17
+      ]
+    }
+  },
+  {
+    "model": "product.product",
+    "pk": 4,
+    "fields": {
+      "title": "Canada Deluxe",
+      "price": "64.00",
+      "image": null,
+      "weight": 340,
+      "category": 1,
+      "ingredients": []
+    }
+  },
+  {
+    "model": "product.product",
+    "pk": 5,
+    "fields": {
+      "title": "Rokko Deluxe",
+      "price": "53.00",
+      "image": null,
+      "weight": 320,
+      "category": 1,
+      "ingredients": []
+    }
+  },
+  {
+    "model": "product.product",
+    "pk": 6,
+    "fields": {
+      "title": "Tempura Roll Deluxe",
+      "price": "47.00",
+      "image": null,
+      "weight": 280,
+      "category": 1,
+      "ingredients": []
+    }
+  },
+  {
+    "model": "product.product",
+    "pk": 7,
+    "fields": {
+      "title": "Zestaw 'Nigiri' 8 szt",
+      "price": "59.00",
+      "image": null,
+      "weight": 360,
+      "category": 13,
+      "ingredients": []
+    }
+  },
+  {
+    "model": "product.product",
+    "pk": 8,
+    "fields": {
+      "title": "Sushi-Dog z Łososiem",
+      "price": "49.00",
+      "image": null,
+      "weight": 350,
+      "category": 2,
+      "ingredients": []
+    }
+  },
+  {
+    "model": "product.product",
+    "pk": 9,
+    "fields": {
+      "title": "Sushi-Dog z Tuńczykiem",
+      "price": "56.00",
+      "image": null,
+      "weight": 350,
+      "category": 2,
+      "ingredients": []
+    }
+  },
+  {
+    "model": "product.product",
+    "pk": 10,
+    "fields": {
+      "title": "Philadelphia Classic",
+      "price": "46.00",
+      "image": null,
+      "weight": 320,
+      "category": 3,
+      "ingredients": [
+        12,
+        13,
+        3,
+        1,
+        2,
+        6
+      ]
+    }
+  },
+  {
+    "model": "product.product",
+    "pk": 11,
+    "fields": {
+      "title": "Philadelphia Węgorz",
+      "price": "51.00",
+      "image": null,
+      "weight": 330,
+      "category": 3,
+      "ingredients": [
+        12,
+        13,
+        3,
+        9,
+        7,
+        6,
+        11
+      ]
+    }
+  },
+  {
+    "model": "product.product",
+    "pk": 12,
+    "fields": {
+      "title": "California Tobiko-Łosos",
+      "price": "49.00",
+      "image": null,
+      "weight": 310,
+      "category": 4,
+      "ingredients": []
+    }
+  },
+  {
+    "model": "product.product",
+    "pk": 13,
+    "fields": {
+      "title": "Tempura Roll with Salmon",
+      "price": "43.00",
+      "image": null,
+      "weight": 290,
+      "category": 5,
+      "ingredients": []
+    }
+  },
+  {
+    "model": "product.product",
+    "pk": 14,
+    "fields": {
+      "title": "Zapiekany Midori",
+      "price": "54.00",
+      "image": null,
+      "weight": 340,
+      "category": 6,
+      "ingredients": []
+    }
+  },
+  {
+    "model": "product.product",
+    "pk": 15,
+    "fields": {
+      "title": "Black Dream Deluxe",
+      "price": "58.00",
+      "image": null,
+      "weight": 350,
+      "category": 7,
+      "ingredients": []
+    }
+  },
+  {
+    "model": "product.product",
+    "pk": 16,
+    "fields": {
+      "title": "Pink Dragon",
+      "price": "54.00",
+      "image": null,
+      "weight": 320,
+      "category": 8,
+      "ingredients": []
+    }
+  },
+  {
+    "model": "product.product",
+    "pk": 17,
+    "fields": {
+      "title": "Panko 'Syake'",
+      "price": "43.00",
+      "image": null,
+      "weight": 340,
+      "category": 9,
+      "ingredients": []
+    }
+  },
+  {
+    "model": "product.product",
+    "pk": 18,
+    "fields": {
+      "title": "Futomaki Classic with Salmon",
+      "price": "41.00",
+      "image": null,
+      "weight": 290,
+      "category": 10,
+      "ingredients": []
+    }
+  },
+  {
+    "model": "product.product",
+    "pk": 19,
+    "fields": {
+      "title": "Hosomaki with Salmon",
+      "price": "21.00",
+      "image": null,
+      "weight": 130,
+      "category": 11,
+      "ingredients": []
+    }
+  },
+  {
+    "model": "product.product",
+    "pk": 20,
+    "fields": {
+      "title": "Gunkan with Salmon",
+      "price": "13.00",
+      "image": null,
+      "weight": 1,
+      "category": 12,
+      "ingredients": []
+    }
+  },
+  {
+    "model": "product.product",
+    "pk": 21,
+    "fields": {
+      "title": "Set 'Enjoy' 32 pcs",
+      "price": "189.00",
+      "image": null,
+      "weight": 32,
+      "category": 13,
+      "ingredients": []
+    }
+  },
+  {
+    "model": "product.product",
+    "pk": 22,
+    "fields": {
+      "title": "Udon with Chicken",
+      "price": "35.00",
+      "image": null,
+      "weight": 350,
+      "category": 14,
+      "ingredients": []
+    }
+  },
+  {
+    "model": "product.product",
+    "pk": 23,
+    "fields": {
+      "title": "Wakame Salad",
+      "price": "18.00",
+      "image": null,
+      "weight": 150,
+      "category": 15,
+      "ingredients": []
+    }
+  },
+  {
+    "model": "product.product",
+    "pk": 24,
+    "fields": {
+      "title": "Tiger Shrimps with Sweet Chili",
+      "price": "31.00",
+      "image": null,
+      "weight": 4,
+      "category": 16,
+      "ingredients": []
+    }
+  },
+  {
+    "model": "product.product",
+    "pk": 25,
+    "fields": {
+      "title": "Truffle Sauce",
+      "price": "3.00",
+      "image": null,
+      "weight": 30,
+      "category": 17,
+      "ingredients": []
+    }
+  },
+  {
+    "model": "product.product",
+    "pk": 26,
+    "fields": {
+      "title": "Passion Fruit Lemonade",
+      "price": "11.00",
+      "image": null,
+      "weight": 330,
+      "category": 18,
+      "ingredients": []
+    }
+  },
+  {
+    "model": "product.product",
+    "pk": 27,
+    "fields": {
+      "title": "Coca Cola 330ml",
+      "price": "8.00",
+      "image": null,
+      "weight": 330,
+      "category": 18,
+      "ingredients": []
+    }
+  },
+  {
+    "model": "product.product",
+    "pk": 28,
+    "fields": {
+      "title": "Green Dragon",
+      "price": "56.00",
+      "image": null,
+      "weight": 320,
+      "category": 8,
+      "ingredients": [
+        12,
+        13,
+        3,
+        7,
+        2,
+        18,
+        8
+      ]
+    }
+  },
+  {
+    "model": "product.product",
+    "pk": 29,
+    "fields": {
+      "title": "Spicy Tuna Futomaki",
+      "price": "39.00",
+      "image": null,
+      "weight": 190,
+      "category": 10,
+      "ingredients": [
+        12,
+        13,
+        3,
+        5
+      ]
+    }
+  },
+  {
+    "model": "product.product",
+    "pk": 30,
+    "fields": {
+      "title": "Salmon Nigiri",
+      "price": "11.00",
+      "image": null,
+      "weight": 1,
+      "category": 11,
+      "ingredients": [
+        12,
+        1
+      ]
+    }
+  },
+  {
+    "model": "product.product",
+    "pk": 31,
+    "fields": {
+      "title": "Tuna Gunkan",
+      "price": "13.00",
+      "image": null,
+      "weight": 1,
+      "category": 12,
+      "ingredients": [
+        12,
+        13,
+        5,
+        17
+      ]
+    }
+  }
+]
