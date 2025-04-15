@@ -1,0 +1,126 @@
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+  padding-left: 16px;
+  padding-right: 16px;
+  background-color: #f5f6f8;
+  font-family: 'Poppins', sans-serif;
+  letter-spacing: -0.2px;
+}
+
+section[id^="category-"] {
+  scroll-margin-top: 40px;
+}
+
+h1, h2, h3, h4, h5 {
+  letter-spacing: -0.4px;
+}
+
+h1, h2, h3 {
+  font-weight: 600;
+}
+
+p, span, li {
+  font-weight: 400;
+}
+
+button, .btn {
+  letter-spacing: -0.3px;
+  font-weight: 500;
+}
+
+
+.menu-wrapper {
+  margin-right: 100px;
+  position: sticky;
+  width: 230px; /* фиксируем ширину */
+  max-width: 100%;
+  word-wrap: break-word;
+  overflow: hidden;
+  top: 40px; /* подогнать под отступ */
+  max-height: 85vh; /* ограничение по высоте */
+  overflow-y: auto;
+  padding-right: 5px; /* чтобы скроллбар не налезал на текст */
+}
+
+.menu-wrapper::-webkit-scrollbar {
+  width: 4px;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.menu-wrapper::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.menu-wrapper::-webkit-scrollbar-thumb {
+  background-color: transparent;
+  border-radius: 10px;
+}
+
+.menu-wrapper ul {
+  list-style: none;
+  padding-left: 0;
+  margin: 0;
+}
+
+.menu-wrapper li {
+  margin-bottom: 10px;
+}
+
+.menu-wrapper a {
+  display: block;
+  white-space: nowrap;
+  overflow: hidden;
+  padding: 4px 8px;
+  color: #212529;
+  text-decoration: none;
+  border-radius: 5px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.menu-wrapper a:hover,
+.menu-wrapper a.active {
+  background-color: #e2f0ff;
+  color: #007bff;
+  font-weight: 550;
+}
+
+.menu-wrapper.scroll-visible::-webkit-scrollbar-thumb {
+  background-color: #d1d5db;
+}
+
+.product-card {
+  max-width: 100%;
+  width: 100%;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.03);
+  transition: all 0.35s cubic-bezier(0.22, 0.61, 0.36, 1);
+  transform: scale(1);
+}
+
+.product-card:hover {
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.12);
+  transform: scale(1.03);
+}
+
+.product-image {
+  width: 80px;
+  height: auto;
+  border-radius: 6px;
+  object-fit: cover;
+}
+
+.badge-custom-weight {
+  display: inline-block;
+  padding: 2px 8px;
+  font-size: 12px;
+  font-weight: 450;
+  border-radius: 5px;
+  background-color: rgba(0, 123, 255, 0.10);
+  color: #007bff;
+  line-height: 1.3;
+}

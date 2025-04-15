@@ -1,10 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Title</title>
-</head>
-<body>
-
-</body>
-</html>
+<h5 class="text-left font-weight-bold mb-4">Menu</h5>
+<ul class="pl-0">
+  {% for category in categories %}
+    <li>
+      <a href="#category-{{ category.id }}">
+        {{ category.title }}
+      </a>
+    </li>
+  {% endfor %}
+</ul>

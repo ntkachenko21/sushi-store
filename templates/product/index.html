@@ -1,10 +1,46 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Title</title>
-</head>
-<body>
+{% extends "base.html" %}
+{% block title %}
+  <title>Meow Sushi</title>
+{% endblock title %}
 
-</body>
-</html>
+{% block content %}
+  {% for category in categories %}
+    <section id="category-{{ category.id }}" class="mb-5">
+      <h2 class="mt-4">{{ category.title }}</h2>
+      <br>
+    
+      <div class="row">
+        {% for product in category.products.all %}
+          <div class="col-lg-6 col-xl-6 mb-4">
+            <div class="product-card d-flex align-items-center p-3 h-100" onclick="openProductModal({{ product.id }})" style="cursor: pointer;">
+
+{#              <!-- Картинка -->#}
+{#              {% if product.image %}#}
+{#                <img src="{{ product.image.url }}" alt="{{ product.title }}" class="product-image mr-3">#}
+{#              {% endif %}#}
+
+              <!-- Текст -->
+              <div class="flex-grow-1">
+                <h5 class="mb-1">{{ product.title }}</h5>
+                <p class="mb-2 text-muted small">
+                  {% for ingredient in product.ingredients.all %}
+                    {{ ingredient.name }}{% if not forloop.last %}, {% endif %}
+                  {% endfor %}
+                </p>
+
+                <div class="d-flex align-items-center">
+                  {% if product.weight %}
+                    <span class="badge-custom-weight mr-2">{{ product.weight }} g</span>
+                  {% endif %}
+                </div>
+
+                <strong class="mt-2 d-block">{{ product.price }} zł</strong>
+              </div>
+
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+    </section>
+  {% endfor %}
+{% endblock content %}
