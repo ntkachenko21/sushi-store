@@ -1,0 +1,32 @@
+<div class="product-modal-content">
+  <h4 class="mb-3">{{ product.title }}</h4>
+
+  <p class="text-muted small mb-1">
+    {% if object.ingredients.all %}
+      {% for ingredient in product.ingredients.all %}
+        {{ ingredient.name }}{% if not forloop.last %}, {% else %}.{% endif %}
+      {% endfor %}
+    {% else %}
+      Not specified
+    {% endif %}
+  </p>
+
+  {% if allergens %}
+    <h6 class="font-weight-bold mt-3 mb-1">Allergens</h6>
+    <p class="text-muted small mb-2">
+      {% for allergen in allergens %}
+        {{ allergen.name }}{% if not forloop.last %}, {% else %}.{% endif %}
+      {% endfor %}
+    </p>
+  {% else %}
+    <h6 class="font-weight-bold mt-3 mb-1">Allergens</h6>
+      {% if product.ingredients.count >= 1 %}
+      	<p class="text-muted small mb-2">✅Allergen-free</p>
+      {% else %}
+        <p class="text-muted small mb-2">Not specified</p>
+      {% endif %} 
+  {% endif %}
+
+
+  <strong class="d-block mt-2">{{ object.price }} zł</strong>
+</div>

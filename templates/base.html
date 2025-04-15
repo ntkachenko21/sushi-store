@@ -2,7 +2,6 @@
 <!doctype html>
 <html lang="en">
 <head>
-
   {% block title %}
     <title>Sushi Store</title>
   {% endblock title %}
@@ -16,32 +15,40 @@
   <meta name="viewport"
         content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-
 </head>
 
 <body>
   <div class="container">
-  <div class="row">
-    <div class="col-md-3 pr-md-4">
-      <div class="menu-wrapper">
-        {% block sidebar %}
-          {% include "includes/sidebar.html" %}
-        {% endblock sidebar %}
+    <div class="row">
+      <div class="col-md-3 pr-md-4">
+        <div class="menu-wrapper">
+          {% block sidebar %}
+            {% include "includes/sidebar.html" %}
+          {% endblock sidebar %}
+        </div>
+      </div>
+
+      <div class="col-md-9">
+        {% block content %}{% endblock content %}
+        {% block pagination %}{% endblock %}
       </div>
     </div>
-  
-    <div class="col-md-9">
-      {% block content %}
-      {% endblock content %}
-
-      {% block pagination %}
-      {% endblock %}
-      {% block scripts %}
-        <script src="{% static 'js/main.js' %}"></script>
-      {% endblock scripts %}
-    </div>
   </div>
-</div>
-
+  
+  {% block modals %}
+    <div class="modal fade" id="productModal" tabindex="-1" role="dialog">
+      <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content p-4" id="productModalContent">
+          <!-- AJAX content will be loaded here -->
+        </div>
+      </div>
+    </div>
+  {% endblock modals %}
+  
+  {% block scripts %}
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="{% static 'js/main.js' %}"></script>
+  {% endblock scripts %}
 </body>
 </html>
