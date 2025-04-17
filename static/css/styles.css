@@ -34,7 +34,7 @@ button, .btn {
 .menu-wrapper {
   margin-right: 100px;
   position: sticky;
-  width: 230px; /* фиксируем ширину */
+  width: 220px; /* фиксируем ширину */
   max-width: 100%;
   word-wrap: break-word;
   overflow: hidden;
@@ -82,13 +82,13 @@ button, .btn {
 
 .menu-wrapper a:hover,
 .menu-wrapper a.active {
-  background-color: #e2f0ff;
+  background-color: rgba(0, 123, 255, 0.03);
   color: #007bff;
-  font-weight: 550;
+  font-weight: 500;
 }
 
 .menu-wrapper.scroll-visible::-webkit-scrollbar-thumb {
-  background-color: #d1d5db;
+  background-color: rgba(108, 117, 125, 0.1);
 }
 
 .product-card {
@@ -125,22 +125,333 @@ button, .btn {
 }
 
 .product-modal-content {
-  font-family: 'Poppins', sans-serif;
+  border-radius: 20px !important;
+  border: none;
+  background: #fff;
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+  animation: modalFadeIn 0.35s ease;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  max-height: 90vh;
 }
 
-.product-modal-content h4 {
+.modal-content h4 {
   font-weight: 600;
   font-size: 1.4rem;
 }
 
-.product-modal-content h6 {
+.modal-content h6 {
   font-weight: 600;
   font-size: 1rem;
 }
 
-.product-modal-content p {
+.modal-content p {
   color: #6c757d !important;
   font-size: 0.9rem;
   line-height: 1.5;
   margin-bottom: 0.5rem;
+}
+
+.floating-cart-btn {
+  position: fixed;
+  bottom: 50px;
+  right: 50px;
+  z-index: 1050;
+  /*opacity: 0;*/
+  transform: translateY(20px);
+  transition: all 0.4s ease-in-out;
+  /*animation: slideUp 0.5s ease-out;*/
+}
+
+.floating-cart-btn.show {
+  display: block;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.floating-cart-btn a {
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.6rem 1.2rem;
+  border-radius: 50px;
+  background-color: #212529;
+  color: white;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  text-decoration: none;
+}
+
+.floating-cart-btn a:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.4);
+  background-color: #343a40;
+}
+
+.modal-add-to-cart-wrapper {
+  padding: 0.75rem 1.5rem;
+  border-top: 1px solid #e5e5e5;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  border-radius: 0 0 12px 12px; /* аккуратное завершение */
+  background-color: #fff;
+}
+
+.modal-backdrop.show {
+  background-color: rgba(0, 0, 0, 0.35);
+}
+
+@keyframes modalFadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(40px) scale(0.95);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.add-to-cart-btn {
+  padding: 0.75rem 1.5rem;
+  border-radius: 12px;
+  font-weight: 500;
+  font-size: 1rem;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+}
+
+.add-to-cart-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+}
+
+.product-modal-content {
+  border-radius: 12px !important;
+  border: none;
+  background: #fff;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
+  animation: modalFadeIn 0.35s ease;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  max-height: 90vh;
+}
+
+
+.scrollable-modal-body {
+  overflow-y: auto;
+  max-height: 60vh;
+  padding-right: 6px;
+}
+
+/* Стили кастомной кнопки закрытия */
+.btn-close-custom {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  width: 32px;
+  height: 32px;
+  background: transparent;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  z-index: 10;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.btn-close-custom::before,
+.btn-close-custom::after {
+  content: '';
+  position: absolute;
+  left: 15px;
+  top: 8px;
+  width: 2px;
+  height: 16px;
+  background-color: #333;
+  transition: background-color 0.3s ease;
+}
+
+.btn-close-custom::before {
+  transform: rotate(45deg);
+}
+
+.btn-close-custom::after {
+  transform: rotate(-45deg);
+}
+
+.btn-close-custom:hover {
+  transform: scale(1.15) rotate(90deg);
+  opacity: 0.9;
+}
+
+.cart-sidebar {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 350px;
+  height: 100vh;
+  background-color: #fff;
+  box-shadow: -2px 0 12px rgba(0, 0, 0, 0.15);
+  z-index: 1060;
+  transform: translateX(100%);
+  transition: transform 0.3s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+.cart-sidebar.show {
+  transform: translateX(0%);
+}
+
+.cart-sidebar-body {
+  flex: 1;
+  overflow-y: auto;
+}
+
+.animated-checkout-btn {
+  transition: all 0.35s cubic-bezier(0.22, 0.61, 0.36, 1);
+  transform: scale(1);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.03);
+  border-radius: 12px;
+}
+
+.animated-checkout-btn:hover {
+  transform: scale(1.03);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.12);
+}
+
+.quantity-controls {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.quantity-display {
+  font-size: 1.1rem;
+  font-weight: 600;
+  min-width: 28px;
+  text-align: center;
+}
+
+.quantity-btn {
+  background: #fff;
+  border: 1px solid #e0e0e0;
+  color: #111;
+  font-weight: 600;
+  font-size: 18px;
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.25s cubic-bezier(0.22, 0.61, 0.36, 1),
+              box-shadow 0.25s cubic-bezier(0.22, 0.61, 0.36, 1),
+              background-color 0.25s ease,
+              color 0.25s ease;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
+  cursor: pointer;
+  user-select: none;
+}
+
+.quantity-btn:hover {
+  transform: scale(1.1) translateY(-2px);
+  box-shadow: 0 10px 18px rgba(0, 0, 0, 0.08);
+  background-color: #f1f3f5;
+  color: #007bff;
+}
+
+.quantity-btn:active {
+  transform: scale(0.98);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.06);
+}
+
+.btn:focus {
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+.quantity-btn:focus {
+  outline: none;
+  box-shadow: none;
+}
+
+.auth-wrapper {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #f9fafb, #eef1f5);
+  padding: 2rem;
+}
+
+.auth-box {
+  width: 100%;
+  max-width: 420px;
+  padding: 2.5rem 2rem;
+  background: #fff;
+  border-radius: 20px;
+  box-shadow: 0 25px 40px rgba(0, 0, 0, 0.1);
+  margin: 2rem 0; /* добавим отступ, чтобы на маленьких экранах не прилипало к краям */
+}
+
+.auth-box h2 {
+  font-weight: 600;
+  font-size: 1.8rem;
+  color: #212529;
+}
+
+.auth-box .form-group label {
+  font-weight: 500;
+  font-size: 0.9rem;
+  margin-bottom: 0.25rem;
+}
+
+.auth-box .form-control {
+  border-radius: 12px;
+  padding: 0.65rem 1rem;
+  font-size: 0.95rem;
+  border: 1px solid #dee2e6;
+  transition: border-color 0.3s ease;
+}
+
+.auth-box .form-control:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 0 0.15rem rgba(0, 123, 255, 0.15);
+}
+
+.auth-box .btn-primary {
+  background-color: #007bff;
+  border: none;
+  border-radius: 12px;
+  padding: 0.6rem 1.25rem;
+  font-weight: 500;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+.auth-box .btn-primary:hover {
+  background-color: #0056b3;
+  transform: scale(1.03);
+  box-shadow: 0 10px 20px rgba(0, 123, 255, 0.2);
+}
+
+.fullpage-auth {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+  min-height: 100vh;
+  background: #f3f4f6;
+  overflow-y: auto;
+}
+
+@media (max-height: 600px) {
+  .auth-box {
+    padding: 1.5rem 1rem;
+  }
 }

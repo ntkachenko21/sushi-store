@@ -1,32 +1,55 @@
-<div class="product-modal-content">
-  <h4 class="mb-3">{{ product.title }}</h4>
-
-  <p class="text-muted small mb-1">
-    {% if object.ingredients.all %}
-      {% for ingredient in product.ingredients.all %}
-        {{ ingredient.name }}{% if not forloop.last %}, {% else %}.{% endif %}
-      {% endfor %}
-    {% else %}
-      Not specified
-    {% endif %}
-  </p>
-
-  {% if allergens %}
-    <h6 class="font-weight-bold mt-3 mb-1">Allergens</h6>
-    <p class="text-muted small mb-2">
-      {% for allergen in allergens %}
-        {{ allergen.name }}{% if not forloop.last %}, {% else %}.{% endif %}
-      {% endfor %}
-    </p>
-  {% else %}
-    <h6 class="font-weight-bold mt-3 mb-1">Allergens</h6>
-      {% if product.ingredients.count >= 1 %}
-      	<p class="text-muted small mb-2">✅Allergen-free</p>
+  <div class="modal-content product-modal-content">
+  
+    <button type="button" class="btn-close-custom" aria-label="Close"></button>
+  
+    <div class="modal-body scrollable-modal-body">
+      <h4 class="mb-3">{{ product.title }}</h4>
+  
+      <p class="text-muted small mb-1">
+        {% if product.ingredients.all %}
+          {% for ingredient in product.ingredients.all %}
+            {{ ingredient.name }}{% if not forloop.last %}, {% else %}.{% endif %}
+          {% endfor %}
+        {% else %}
+          Not specified
+        {% endif %}
+      </p>
+  
+      {% if allergens %}
+        <h6 class="font-weight-bold mt-3 mb-1">Allergens</h6>
+        <p class="text-muted small mb-2">
+          {% for allergen in allergens %}
+            {{ allergen.name }}{% if not forloop.last %}, {% else %}.{% endif %}
+          {% endfor %}
+        </p>
       {% else %}
-        <p class="text-muted small mb-2">Not specified</p>
-      {% endif %} 
-  {% endif %}
-
-
-  <strong class="d-block mt-2">{{ object.price }} zł</strong>
-</div>
+        <h6 class="font-weight-bold mt-3 mb-1">Allergens</h6>
+          {% if product.ingredients.count >= 1 %}
+            <p class="text-muted small mb-2">✅Allergen-free</p>
+          {% else %}
+            <p class="text-muted small mb-2">Not specified</p>
+          {% endif %}
+      {% endif %}
+  
+      <strong class="d-block mt-2">{{ product.price }} zł</strong>
+    </div>
+  
+    <div class="modal-add-to-cart-wrapper d-flex justify-content-between align-items-center">
+      
+      <div class="quantity-controls d-flex align-items-center gap-2">
+        <button class="btn quantity-btn" id="decreaseQty">
+          <i class="bi bi-dash"></i>
+        </button>
+        <span id="productQuantity" class="quantity-display">1</span>
+        <button class="btn quantity-btn" id="increaseQty">
+          <i class="bi bi-plus"></i>
+        </button>
+      </div>
+  
+      <button class="btn btn-primary add-to-cart-btn" id="addToCartBtn">
+        Add to cart: {{ product.price }} zł
+      </button>
+      
+    </div>
+  
+  </div>

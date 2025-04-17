@@ -1,4 +1,3 @@
-// 🟢 Сделай её ГЛОБАЛЬНОЙ — вне DOMContentLoaded!
 function openProductModal(productId) {
   fetch(`/product/${productId}/`)
     .then(response => response.text())
@@ -6,7 +5,17 @@ function openProductModal(productId) {
       const modalContent = document.getElementById("productModalContent");
       if (modalContent) {
         modalContent.innerHTML = html;
-        $('#productModal').modal('show'); // Показать Bootstrap-модалку
+
+        const modal = document.getElementById("productModal");
+        const modalInstance = new bootstrap.Modal(modal);
+        modalInstance.show();
+
+        const closeButton = modalContent.querySelector(".btn-close-custom");
+        if (closeButton) {
+          closeButton.addEventListener("click", function () {
+            modalInstance.hide();
+          });
+        }
       }
     })
     .catch(error => {
@@ -99,4 +108,55 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
   activateMenuLink(); // при загрузке
+});
+
+
+// === КОРЗИНА: загрузка и управление ===
+
+function toggleCartSidebar(show = true) {
+  const sidebar = document.querySelector('#cartSidebar');
+  if (sidebar) {
+    sidebar.classList.toggle('show', show);
+  }
+}
+
+function loadCartSidebar() {
+  fetch('/checkout/cart/')
+    .then(res => res.json())
+    .then(data => {
+      const container = document.getElementById('cartSidebarContainer');
+      if (container) {
+        container.innerHTML = data.html;
+
+        // Показать
+        toggleCartSidebar(true);
+
+        // Назначить обработчик кнопки закрытия
+        const closeBtn = document.getElementById('closeCartSidebar');
+        if (closeBtn) {
+          closeBtn.addEventListener('click', () => toggleCartSidebar(false));
+        }
+      }
+    })
+    .catch(err => console.error('Cart load error:', err));
+}
+
+// === Обработка кнопок + и - и обновление суммы ===
+
+document.addEventListener("click", function (e) {
+  const quantityEl = document.getElementById("productQuantity");
+  const addBtn = document.getElementById("addToCartBtn");
+
+  if (!quantityEl || !addBtn) return;
+
+  let quantity = parseInt(quantityEl.textContent) || 1;
+  const priceText = addBtn.textContent.match(/(\d+[.,]?\d*)/);
+  const basePrice = priceText ? parseFloat(priceText[1].replace(",", ".")) / quantity : 0;
+
+  if (e.target.closest("#increaseQty")) quantity++;
+  if (e.target.closest("#decreaseQty") && quantity > 1) quantity--;
+
+  quantityEl.textContent = quantity;
+  const totalPrice = (basePrice * quantity).toFixed(2).replace(".", ",");
+  addBtn.innerHTML = `Add to cart: ${totalPrice} zł`;
 });
