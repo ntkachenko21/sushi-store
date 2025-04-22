@@ -1,0 +1,178 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container py-5">
+  <div class="row g-4">
+
+    <!-- Left Side: Unified Checkout Form -->
+    <div class="col-lg-7">
+      <form method="post" id="checkoutForm" class="checkout-form bg-white p-4 shadow-sm rounded-4">
+        {% csrf_token %}
+
+        <!-- Section: Contacts -->
+        <div class="pb-4 mb-4 border-bottom">
+          <h4 class="mb-3 fw-semibold">Contacts</h4>
+
+          <div class="mb-3">
+            <label for="name" class="form-label">Your name<span class="text-danger">*</span></label>
+            <input type="text" name="name" id="name" class="form-control bg-light border-0 rounded-3 py-2 px-3"
+              placeholder="Enter your name" value="{{ user.first_name|default_if_none:'' }}" required>
+          </div>
+
+          <div class="mb-2">
+            <label for="phone" class="form-label">Phone<span class="text-danger">*</span></label>
+            <input type="tel" name="phone" id="phone" class="form-control bg-light border-0 rounded-3 py-2 px-3"
+              placeholder="+48 123 456 789" value="{{ request.user.phone|default_if_none:'' }}" required>
+            <small class="text-muted mt-1 d-block">We'll use this to confirm your order.</small>
+          </div>
+
+          <div class="form-check mt-3">
+            <input class="form-check-input" type="checkbox" id="agreeRules" required>
+            <label class="form-check-label small" for="agreeRules">
+              I agree with the rules <a href="#" class="text-primary">for the processing of personal data</a>.<br>
+              <span class="text-muted">Your number after ordering will be automatically entered into our database.</span>
+            </label>
+          </div>
+        </div>
+        
+        <!-- Section: Delivery Schedule -->
+        <div class="pb-4 mb-4 border-bottom">
+          <div class="apple-select-wrapper">
+            <label for="deliverySchedule" class="apple-select-label">Delivery Schedule</label>
+            <div class="custom-select-container">
+              <select id="deliverySchedule" name="delivery_schedule" class="apple-select">
+              </select>
+            </div>
+          </div>
+        </div>
+  
+        <!-- Section: Payment -->
+        <div class="pb-4 mb-4 border-bottom">
+          <h4 class="mb-3 fw-semibold">Payment Method</h4>
+          <div class="payment-method-toggle d-flex flex-column gap-2 mb-3">
+            <input type="radio" class="btn-check" name="payment" id="cashOption" value="cash" autocomplete="off" checked>
+            <label class="btn custom-toggle-btn rounded-pill text-start px-4 py-2" for="cashOption">Cash</label>
+
+            <input type="radio" class="btn-check" name="payment" id="cardOption" value="card" autocomplete="off">
+            <label class="btn custom-toggle-btn rounded-pill text-start px-4 py-2" for="cardOption">Card to courier</label>
+
+            <div class="position-relative coming-soon-btn">
+              <input type="radio" class="btn-check" name="payment" id="disabledOption" value="disabled" disabled>
+              <label class="btn custom-toggle-btn rounded-pill text-start px-4 py-2 disabled w-100" for="disabledOption">
+                Pay online
+              </label>
+              <span class="badge-coming-soon">Coming soon</span>
+            </div>
+          </div>
+
+          <div id="changeFieldWrapper" class="transition-fade">
+            <label class="form-label text-muted small">Prepare a change from</label>
+            <input type="text" id="changeInput" class="form-control bg-light border-0 rounded-3 py-2 px-3" placeholder="e.g. 100 zł">
+          </div>
+        </div>
+
+        <!-- Section: Person Count -->
+        <div class="pb-4 mb-4 border-bottom">
+          <h4 class="mb-3 fw-semibold">Person Count</h4>
+          <div class="quantity-controls d-flex align-items-center gap-2">
+            <button type="button" class="btn quantity-btn d-flex justify-content-center align-items-center" id="decreaseQty">
+              <i class="bi bi-dash fs-5"></i>
+            </button>
+            <span id="productQuantity" class="quantity-display fs-5 fw-semibold">1</span>
+            <button type="button" class="btn quantity-btn d-flex justify-content-center align-items-center" id="increaseQty">
+              <i class="bi bi-plus fs-5"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- Section: Comment -->
+        <div class="pb-2">
+          <h4 class="mb-3 fw-semibold">Comment</h4>
+          <textarea
+            class="form-control comment-field"
+            id="comment"
+            name="comment"
+            placeholder="Leave a comment..."
+            maxlength="512"
+            style="resize: none; overflow: hidden; min-height: 120px;"
+            oninput="this.style.height='auto'; this.style.height=(this.scrollHeight)+'px';"
+          ></textarea>
+        </div>
+
+      </form>
+    </div>
+
+    <!-- Right Side: Order Summary -->
+    <div class="col-lg-5">
+      <div class="sticky-top rounded-4 overflow-visible" style="top: 100px; z-index: 1;">
+        <div class="bg-white p-4 shadow-sm rounded-4">
+
+          <h5 class="fw-semibold fs-5 mb-3 border-bottom pb-3">Your order</h5>
+
+          <ul class="list-unstyled mb-4">
+            {% for item in cart_items %}
+            <li class="d-flex justify-content-between align-items-start py-3 border-bottom">
+              <div class="me-3">
+                <div class="fw-semibold">{{ item.product.title }}</div>
+                <div class="text-muted small">
+                  {{ item.quantity }} × {{ item.product.price }} zł {% if item.product.weight %} • {{ item.product.weight }} g {% endif %}
+                </div>
+              </div>
+              <div class="text-end fw-semibold">
+                {{ item.total|floatformat:2 }} zł
+              </div>
+            </li>
+            {% endfor %}
+          </ul>
+
+          <div class="d-flex justify-content-between text-muted small mb-2">
+            <span>Order price:</span>
+            <span>{{ total_price }} zł</span>
+          </div>
+          <div class="d-flex justify-content-between fw-bold fs-5">
+            <span>Total:</span>
+            <span>{{ total_price }} zł</span>
+          </div>
+
+          <hr class="my-4">
+
+          <div class="mb-3 d-flex justify-content-between small text-muted">
+            <span>Number of persons:</span>
+            <span id="personCountSummary">1</span>
+          </div>
+          <div class="mb-3 d-flex justify-content-between small text-muted">
+            <span>Payment method:</span>
+            <span id="paymentMethodSummary">Cash</span>
+          </div>
+          <div class="mb-3 d-flex justify-content-between small text-muted" id="changeAmountWrapper">
+            <span>Prepare a change from:</span>
+            <span id="changeAmountSummary">—</span>
+          </div>
+          <div class="mb-3 small text-muted">
+            <div class="mb-1">Restaurant address:</div>
+            <div class="text-end">
+              Tadeusza Szafrana<br>4, 30-363 Kraków
+            </div>
+          </div>
+          <div class="mb-4 d-flex justify-content-between fw-semibold">
+            <span>Pickup time</span>
+            <span id="pickupTimeSummary">—</span>
+          </div>
+
+          <button type="submit" form="checkoutForm" class="btn btn-primary btn-lg w-100 rounded-3 animated-checkout-btn">
+            Confirm the order
+          </button>
+
+          <div class="text-center text-muted fw-medium mt-4 small">
+            <a href="{% url 'product:index' %}" class="back-to-menu-link">
+              Back to menu
+            </a>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+{% endblock %}

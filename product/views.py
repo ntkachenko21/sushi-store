@@ -7,7 +7,7 @@ from product.models import Product, Category, Ingredient
 
 def index(request: HttpRequest) -> HttpResponse:
     categories = Category.objects.all()
-    products = Product.objects.all()
+    products = Product.objects.prefetch_related("ingredients")
     context = {
         "categories": categories,
         "products": products,

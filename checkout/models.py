@@ -1,24 +1,24 @@
 from django.db import models
-
+from django.utils import timezone
 from product.models import Product
 
-
 class Cart(models.Model):
-    total_price = models.DecimalField(max_digits=7, decimal_places=2)
+    session_key = models.CharField(max_length=40, null=True, blank=True)
+    created_at = models.DateTimeField(auto_now_add=True)
 
-    @property
-    def total_price_function(self):
-        return sum(item.total_price for item in self.items.all())
+    def __str__(self):
+        return f"Cart ({self.session_key})"
 
+    def total_price(self):
+        return sum(item.total_price() for item in self.items.all())
 
 class CartItem(models.Model):
-    quantity = models.PositiveIntegerField()
+    cart = models.ForeignKey(Cart, on_delete=models.CASCADE, related_name='items')
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
-    cart = models.ForeignKey(Cart, on_delete=models.CASCADE, related_name="items")
-    unit_price = models.DecimalField(max_digits=7, decimal_places=2)
-    total_price = models.DecimalField(max_digits=9, decimal_places=2)
+    quantity = models.PositiveIntegerField(default=1)
 
-    def save(self, *args, **kwargs):
-        self.unit_price = self.product.price or 0
-        self.total_price = self.unit_price * self.quantity
-        super().save(*args, **kwargs)
+    def total_price(self):
+        return self.product.price * self.quantity
+
+    def __str__(self):
+        return f"{self.quantity} x {self.product.title}"

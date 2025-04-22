@@ -37,6 +37,8 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    "django_htmx",
+    "widget_tweaks",
     "debug_toolbar",
     "django_browser_reload",
     "product",
@@ -53,6 +55,7 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
+    "django_htmx.middleware.HtmxMiddleware",
     "debug_toolbar.middleware.DebugToolbarMiddleware",
 ]
 
@@ -138,3 +141,5 @@ AUTH_USER_MODEL = "user.CustomUser"
 INTERNAL_IPS = [
     "127.0.0.1",
 ]
+
+LOGOUT_REDIRECT_URL = "/"

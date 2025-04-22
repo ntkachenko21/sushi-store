@@ -1,10 +1,9 @@
-{#<h5 class="text-left font-weight-bold mb-4">Menu</h5>#}
-<ul class="pl-0">
-  {% for category in categories %}
-    <li>
-      <a href="#category-{{ category.id }}">
-        {{ category.title }}
-      </a>
-    </li>
-  {% endfor %}
-</ul>
+<div class="sidebar-wrapper">
+  <div class="sidebar-scroll">
+    <ul>
+      {% for category in categories %}
+        <li><a href="#category-{{ category.id }}">{{ category.title }}</a></li>
+      {% endfor %}
+    </ul>
+  </div>
+</div>

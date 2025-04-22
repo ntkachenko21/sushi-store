@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <div class="container mt-4">
+    <a href="{% url 'product:index' %}" class="return-to-menu-link">
+      <span class="arrow-icon mr-2">&#8592;</span> Return to menu
+    </a>
+  </div>
+<div class="container pt-4 pb-5">
+  <div class="row justify-content-center">
+    <div class="col-md-8 col-lg-7">
+      <div class="account-card">
+        <div class="d-flex align-items-center mb-4">
+          <div class="profile-avatar mr-3">
+            <i class="bi bi-person-fill"></i>
+          </div>
+          <div>
+            <h4 class="mb-1">
+              {% if user.first_name and user.last_name %}
+                {{ user.first_name }} {{ user.last_name }}
+              {% else %}
+                {{ user.username }}
+              {% endif %}
+            </h4>
+            <p class="text-muted mb-0">Welcome back 👋</p>
+          </div>
+        </div>
+
+        <hr class="my-4">
+
+        <div>
+          <div>
+            <div class="info-label">Phone</div>
+            <div class="info-value">{{ user.phone|default:"Not provided" }}</div>
+          </div>
+
+          <div>
+            <div class="info-label">Email</div>
+            <div class="info-value">{{ user.email|default:"Not provided" }}</div>
+          </div>
+
+          <div>
+            <div class="info-label">Username</div>
+            <div class="info-value">{{ user.username }}</div>
+          </div>
+        </div>
+
+        <hr class="my-4">
+
+        <div class="text-right">
+         <form method="post" action="{% url 'logout' %}">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-outline-danger logout-btn">Log out</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

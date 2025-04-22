@@ -3,15 +3,14 @@ html {
 }
 
 body {
-  padding-left: 16px;
-  padding-right: 16px;
+  padding: 0;
   background-color: #f5f6f8;
   font-family: 'Poppins', sans-serif;
   letter-spacing: -0.2px;
 }
 
 section[id^="category-"] {
-  scroll-margin-top: 40px;
+  scroll-margin-top: 140px;
 }
 
 h1, h2, h3, h4, h5 {
@@ -32,16 +31,19 @@ button, .btn {
 }
 
 .menu-wrapper {
+  margin-top: 30px;  /* было слишком близко к хэдеру */
+  padding-top: 10px;
   margin-right: 100px;
   position: sticky;
   width: 220px; /* фиксируем ширину */
   max-width: 100%;
   word-wrap: break-word;
   overflow: hidden;
-  top: 40px; /* подогнать под отступ */
+  top: 96px; /* подогнать под отступ */
   max-height: 85vh; /* ограничение по высоте */
   overflow-y: auto;
   padding-right: 5px; /* чтобы скроллбар не налезал на текст */
+  z-index: 9;
 }
 
 .menu-wrapper::-webkit-scrollbar {
@@ -76,7 +78,7 @@ button, .btn {
   padding: 4px 8px;
   color: #212529;
   text-decoration: none;
-  border-radius: 5px;
+  border-radius: 8px;
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
@@ -292,24 +294,42 @@ button, .btn {
   position: fixed;
   top: 0;
   right: 0;
-  width: 350px;
+  width: 380px;
   height: 100vh;
   background-color: #fff;
-  box-shadow: -2px 0 12px rgba(0, 0, 0, 0.15);
-  z-index: 1060;
+  box-shadow: -4px 0 12px rgba(0, 0, 0, 0.1);
+  z-index: 1050;
   transform: translateX(100%);
-  transition: transform 0.3s ease;
-  display: flex;
-  flex-direction: column;
+  transition: transform 0.35s ease-in-out; /* ✅ ключевая строка */
+  will-change: transform; /* для плавности */
 }
-
 .cart-sidebar.show {
-  transform: translateX(0%);
+  transform: translateX(0);
 }
 
 .cart-sidebar-body {
-  flex: 1;
   overflow-y: auto;
+  height: calc(100vh - 60px); /* сверху заголовок */
+}
+
+.custom-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.35);
+  z-index: 1049; /* на 1 меньше, чем у .cart-sidebar */
+  transition: opacity 0.3s ease;
+}
+
+.custom-backdrop.show {
+  display: block;
+  opacity: 1;
+}
+
+body.no-scroll {
+  overflow: hidden;
 }
 
 .animated-checkout-btn {
@@ -317,6 +337,13 @@ button, .btn {
   transform: scale(1);
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.03);
   border-radius: 12px;
+}
+
+.btn-close-custom {
+  border: none;
+  background: transparent;
+  font-size: 1.2rem;
+  cursor: pointer;
 }
 
 .animated-checkout-btn:hover {
@@ -411,6 +438,10 @@ button, .btn {
   margin-bottom: 0.25rem;
 }
 
+.form-control.pe-5 {
+  padding-right: 2.5rem; /* Чтобы иконка не налезала на текст */
+}
+
 .auth-box .form-control {
   border-radius: 12px;
   padding: 0.65rem 1rem;
@@ -454,4 +485,572 @@ button, .btn {
   .auth-box {
     padding: 1.5rem 1rem;
   }
+}
+
+/*.site-header {*/
+/*  width: 100%;*/
+/*  padding: 1rem 2rem;*/
+/*  background-color: #fff;*/
+/*  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);*/
+/*  display: flex;*/
+/*  align-items: center;*/
+/*  justify-content: space-between;*/
+/*  position: sticky;*/
+/*  top: 0;*/
+/*  z-index: 1000;*/
+/*}*/
+
+.site-header .nav-link {
+  font-weight: 500;
+  color: #333;
+  transition: color 0.3s;
+}
+
+.site-header .nav-link:hover {
+  color: #0d6efd;
+}
+
+.logo-icon {
+  font-size: 1.5rem;
+  transition: transform 0.2s ease;
+}
+
+.logo-icon:hover {
+  transform: rotate(12deg);
+}
+
+.mobile-menu a {
+  font-weight: 500;
+}
+
+/* === УЛУЧШЕННЫЙ ФУТЕР === */
+.modern-footer {
+  background-color: #f8f9fa;
+  color: #343a40;
+  font-size: 0.95rem;
+}
+
+.footer-logo {
+  font-weight: 600;
+  font-size: 1.4rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.footer-logo img {
+  height: 28px;
+}
+
+.footer-heading {
+  font-weight: 600;
+  font-size: 1rem;
+  color: #212529;
+  margin-bottom: 1rem;
+}
+
+.modern-footer ul {
+  padding-left: 0;
+  list-style: none;
+}
+
+.modern-footer ul li {
+  margin-bottom: 0.5rem;
+}
+
+.modern-footer .social-icons {
+  margin-top: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.social-icons a {
+  font-size: 1.4rem;
+  color: #495057;
+  transition: color 0.3s ease;
+}
+
+.social-icons a:hover {
+  color: #007bff;
+}
+
+.modern-footer a {
+  text-decoration: none;
+  color: #343a40;
+  transition: color 0.3s ease;
+}
+
+.modern-footer a:hover {
+  color: #007bff;
+}
+
+.footer-bottom {
+  padding-top: 1.5rem;
+  font-size: 0.85rem;
+  border-top: 1px solid #dee2e6;
+  margin-top: 2rem;
+}
+
+@media (max-width: 768px) {
+  .modern-footer .text-md-left {
+    text-align: center !important;
+  }
+  .modern-footer .social-icons {
+    justify-content: center;
+  }
+}
+
+.menu-header {
+  border-bottom: 1px solid #dee2e6;
+}
+
+.menu-title {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #343a40;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.sticky-top {
+  position: sticky;
+  top: 0;
+  background-color: white;
+  z-index: 10;
+}
+
+.account-card {
+  background: #fff;
+  border-radius: 20px;
+  padding: 2.5rem;
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+}
+
+.account-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 35px 60px rgba(0, 0, 0, 0.08);
+}
+
+.profile-avatar {
+  width: 72px;
+  height: 72px;
+  background-color: #007bff;
+  color: #fff;
+  font-size: 1.8rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  box-shadow: 0 6px 16px rgba(0, 123, 255, 0.2);
+}
+
+.info-label {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  color: #6c757d;
+  letter-spacing: 0.5px;
+  margin-bottom: 0.25rem;
+}
+
+.info-value {
+  font-size: 1rem;
+  color: #212529;
+  font-weight: 500;
+  margin-bottom: 1rem;
+}
+
+.logout-btn {
+  padding: 0.5rem 1.25rem;
+  border-radius: 12px;
+  transition: all 0.3s ease;
+}
+
+.logout-btn:hover {
+  transform: scale(1.05);
+  background-color: #dc3545;
+  color: #fff;
+}
+
+/* Модальное окно логина */
+.login-modal {
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 2rem;
+  animation: fadeInUp 0.35s ease;
+}
+
+.login-modal h4 {
+  font-weight: 600;
+  font-size: 1.5rem;
+  color: #212529;
+}
+
+.login-modal .form-group label {
+  font-weight: 500;
+  font-size: 0.95rem;
+  margin-bottom: 0.25rem;
+  color: #495057;
+}
+
+.login-modal .form-control {
+  border-radius: 12px;
+  padding: 0.65rem 1rem;
+  font-size: 0.95rem;
+  border: 1px solid #dee2e6;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.login-modal .form-control:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 0 0.15rem rgba(0, 123, 255, 0.15);
+  outline: none;
+}
+
+.login-modal .btn-primary {
+  background-color: #007bff;
+  border: none;
+  border-radius: 12px;
+  font-weight: 500;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+.login-modal .btn-primary:hover {
+  background-color: #0056b3;
+  transform: scale(1.03);
+  box-shadow: 0 10px 20px rgba(0, 123, 255, 0.2);
+}
+
+/* Анимация появления */
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Обёртка должна быть относительной */
+.form-group.position-relative {
+  position: relative;
+}
+
+.custom-toggle-password {
+  position: absolute;
+  top: 50%;
+  right: 16px;
+  transform: translateY(-50%);
+  cursor: pointer;
+  color: #6c757d;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  transition: background-color 0.2s ease;
+}
+
+.custom-toggle-password:hover {
+  background-color: rgba(0, 123, 255, 0.05);
+  color: #007bff;
+}
+
+.return-to-menu-link {
+  display: inline-flex;
+  align-items: center;
+  font-weight: 500;
+  color: #0d6efd;
+  background-color: #eaf4ff;
+  padding: 10px 16px;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(13, 110, 253, 0.1);
+  text-decoration: none;
+  transition: all 0.3s ease;
+  margin-bottom: 20px;
+}
+
+.return-to-menu-link:hover {
+  background-color: #d0eaff;
+  color: #084298;
+  text-decoration: none;
+}
+
+.return-to-menu-link .arrow-icon {
+  transition: transform 0.3s ease;
+  font-size: 1.2rem;
+}
+
+.return-to-menu-link:hover .arrow-icon {
+  transform: translateX(-5px);
+}
+
+.nav-user-icon {
+  font-size: 1.3rem;
+}
+
+.checkout-summary {
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+.order-summary {
+  position: sticky;
+  top: 96px;
+}
+
+.checkout-form input:focus,
+.checkout-form textarea:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 0 0.15rem rgba(0, 123, 255, 0.15);
+}
+
+.checkout-form .form-check-input:checked {
+  background-color: #007bff;
+  border-color: #007bff;
+}
+
+.checkout-form,
+.checkout-summary {
+  border-radius: 20px !important;
+}
+
+/* Скругление элементов формы */
+.checkout-form .form-control,
+.checkout-form .form-select,
+.checkout-form textarea,
+.checkout-form .input-group-text,
+.checkout-form .btn,
+.checkout-form .form-check-input {
+  border-radius: 12px !important;
+}
+
+/* Кнопки + / −
+.checkout-form .btn-outline-secondary,
+.checkout-form .btn-outline-primary {
+  border-radius: 12px !important;
+}
+
+/* Карточка заказа */
+.checkout-summary .list-group-item {
+  border-radius: 12px;
+  margin-bottom: 0.5rem;
+}
+
+.checkout-summary ul li:last-child {
+  border-bottom: none;
+}
+
+.alert {
+  border-radius: 12px;
+  font-size: 0.95rem;
+}
+
+.btn:disabled {
+  background-color: #f2f2f2;
+  color: #aaa;
+  border: none;
+  cursor: not-allowed;
+}
+
+.btn-check:checked + .btn-outline-dark {
+  background-color: #0d6efd;
+  color: white;
+  border-color: #0d6efd;
+  transition: all 0.3s ease;
+}
+
+.transition-fade {
+  transition: all 0.3s ease;
+}
+
+.transition-fade.hidden {
+  opacity: 0;
+  max-height: 0;
+  overflow: hidden;
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+}
+
+/* Скрытие стандартных радио-кнопок */
+input[type="radio"].btn-check {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.custom-toggle-btn {
+  max-width: 250px;
+  transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+  border: 1px solid #ccc;
+}
+
+.btn-check:checked + .custom-toggle-btn {
+  background-color: #0d6efd;
+  color: white;
+  border-color: #0d6efd;
+}
+
+.btn-person {
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  font-size: 20px;
+  font-weight: bold;
+  border: 1px solid #ccc;
+  background-color: #fff;
+  transition: all 0.2s ease;
+}
+
+.btn-person:hover {
+  background-color: #0d6efd;
+  color: #fff;
+  border-color: #0d6efd;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.comment-field {
+  resize: none;             /* запрещаем ручное растягивание */
+  min-height: 100px;        /* выше по умолчанию */
+  overflow-y: hidden;       /* скроем скролл, пусть растёт сама */
+  transition: height 0.2s ease;
+}
+
+.checkout-form input:focus,
+.checkout-form textarea:focus {
+  border-color: #0d6efd;
+  box-shadow: 0 0 0 0.2rem rgba(13, 110, 253, 0.15); /* мягкое голубое свечение */
+  background-color: transparent;
+  transition: all 0.3s ease;
+}
+
+.is-invalid {
+  border: 1px solid #dc3545 !important;
+  box-shadow: 0 0 0 0.15rem rgba(220, 53, 69, 0.25);
+  background-color: #ffeef0;
+}
+
+.coming-soon-btn {
+  position: relative;
+  pointer-events: none;
+  opacity: 0.6;
+}
+
+.coming-soon-btn label {
+  background-color: #f1f3f5 !important;
+  color: #aaa !important;
+  border-color: #e0e0e0 !important;
+  cursor: not-allowed;
+  position: relative;
+}
+
+.badge-coming-soon {
+  position: absolute;
+  top: 50%;
+  right: 16px;
+  transform: translateY(-50%);
+  background: linear-gradient(90deg, #e2e6ea, #f8f9fa);
+  color: #555;
+  font-size: 0.7rem;
+  font-weight: 500;
+  padding: 2px 8px;
+  border-radius: 999px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  pointer-events: none;
+}
+
+.coming-soon-btn label {
+  backdrop-filter: blur(3px);
+}
+
+.back-to-menu-link {
+  display: inline-block;
+  font-weight: 500;
+  font-size: 0.95rem;
+  color: #0d6efd;
+  text-decoration: none;
+  transition: opacity 0.2s ease;
+}
+
+.back-to-menu-link:hover {
+  opacity: 0.7;
+  text-decoration: none; /* отключает подчёркивание */
+}
+
+.apple-select-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.apple-select-label {
+  font-weight: 600;
+  font-size: 1.1rem;
+  color: #111;
+  margin-bottom: 0.2rem;
+}
+
+.custom-select-container {
+  position: relative;
+  max-width: 250px;
+}
+
+.apple-select {
+  appearance: none;
+  width: 100%;
+  padding: 0.75rem 1.2rem;
+  font-size: 1rem;
+  font-weight: 500;
+  color: #333;
+  background-color: #f9f9fa;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02);
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' fill='none' stroke='%23999' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9' /%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 1rem center;
+  background-size: 1rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.apple-select:focus {
+  outline: none;
+  border-color: #0d6efd;
+  box-shadow: 0 0 0 3px rgba(13, 110, 253, 0.15);
+  background-color: #fff;
+}
+
+.apple-select:disabled {
+  background-color: #eee;
+  cursor: not-allowed;
+}
+
+.apple-select option {
+  padding: 0.8rem;
+}
+
+.cart-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.35);
+  z-index: 1049; /* меньше, чем у #cartSidebar (1050) */
+  transition: opacity 0.3s ease;
+}
+
+.cart-backdrop.show {
+  display: block;
+  opacity: 1;
+}
+
+body.cart-open {
+  overflow: hidden;
 }

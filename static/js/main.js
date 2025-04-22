@@ -1,3 +1,6 @@
+// === Глобальная переменная для модального окна продукта ===
+let productModalInstance = null;
+
 function openProductModal(productId) {
   fetch(`/product/${productId}/`)
     .then(response => response.text())
@@ -7,15 +10,43 @@ function openProductModal(productId) {
         modalContent.innerHTML = html;
 
         const modal = document.getElementById("productModal");
-        const modalInstance = new bootstrap.Modal(modal);
-        modalInstance.show();
+        productModalInstance = new bootstrap.Modal(modal);
+        productModalInstance.show();
 
         const closeButton = modalContent.querySelector(".btn-close-custom");
         if (closeButton) {
           closeButton.addEventListener("click", function () {
-            modalInstance.hide();
+            productModalInstance.hide();
           });
         }
+
+        const quantityEl = modalContent.querySelector("#productQuantity");
+        const addBtn = modalContent.querySelector("#addToCartBtn");
+
+        let quantity = 1;
+        const basePrice = parseFloat(
+          addBtn?.dataset.price || addBtn?.textContent.match(/[\d.,]+/)[0].replace(",", ".")
+        );
+
+        const updateUI = () => {
+          quantityEl.textContent = quantity;
+          const totalPrice = (basePrice * quantity).toFixed(2).replace(".", ",");
+          addBtn.innerHTML = `Add to cart: ${totalPrice} zł`;
+        };
+
+        modalContent.querySelector("#increaseQty")?.addEventListener("click", () => {
+          quantity++;
+          updateUI();
+        });
+
+        modalContent.querySelector("#decreaseQty")?.addEventListener("click", () => {
+          if (quantity > 1) {
+            quantity--;
+            updateUI();
+          }
+        });
+
+        updateUI();
       }
     })
     .catch(error => {
@@ -23,9 +54,13 @@ function openProductModal(productId) {
     });
 }
 
-// Всё остальное — внутри DOMContentLoaded
 document.addEventListener("DOMContentLoaded", function () {
-  // Показ/скрытие скроллбара в меню
+  const toggle = document.getElementById("mobileToggle");
+  const mobileMenu = document.querySelector(".mobile-menu");
+  toggle?.addEventListener("click", () => {
+    mobileMenu.classList.toggle("d-none");
+  });
+
   const menu = document.querySelector(".menu-wrapper");
   if (menu) {
     menu.addEventListener("mouseenter", () => {
@@ -36,9 +71,8 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
-  // Плавная прокрутка якоря
   function smoothScrollTo(target) {
-    const offset = 30;
+    const offset = 100;
     const targetPosition = target.getBoundingClientRect().top + window.scrollY - offset;
     const startPosition = window.scrollY;
     const distance = targetPosition - startPosition;
@@ -64,7 +98,6 @@ document.addEventListener("DOMContentLoaded", function () {
     window.requestAnimationFrame(step);
   }
 
-  // Обработка якорных ссылок
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener("click", function (e) {
       const target = document.querySelector(this.getAttribute("href"));
@@ -75,7 +108,6 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 
-  // Подсветка активной категории при скролле + debounce
   const sections = document.querySelectorAll('section[id^="category-"]');
   const menuLinks = document.querySelectorAll('.menu-wrapper a');
 
@@ -107,17 +139,204 @@ document.addEventListener("DOMContentLoaded", function () {
     }, 50);
   });
 
-  activateMenuLink(); // при загрузке
+  activateMenuLink();
+
+  const closeBtn = document.getElementById("closeCartSidebar");
+  if (closeBtn) {
+    closeBtn.addEventListener("click", () => {
+      const sidebar = document.getElementById("cartSidebar");
+      if (sidebar) {
+        sidebar.classList.remove("show");
+      }
+    });
+  }
+
+  const openBtn = document.getElementById("openCartSidebar");
+  if (openBtn) {
+    openBtn.addEventListener("click", () => {
+      const sidebar = document.getElementById("cartSidebar");
+      if (sidebar) {
+        sidebar.classList.add("show");
+      }
+    });
+  }
+
+  const cashOption = document.getElementById("cashOption");
+  const paymentOptions = document.querySelectorAll('input[name="payment"]');
+  const changeFieldWrapper = document.getElementById("changeFieldWrapper");
+  const changeInput = document.getElementById("changeInput");
+  const changeAmountSummary = document.getElementById("changeAmountSummary");
+  const paymentMethodSummary = document.getElementById("paymentMethodSummary");
+
+  const decreaseBtn = document.getElementById("decreaseQty");
+  const increaseBtn = document.getElementById("increaseQty");
+  const quantityEl = document.getElementById("productQuantity");
+  const personCountSummary = document.getElementById("personCountSummary");
+
+  let quantity = 1;
+  let totalPrice = parseFloat(document.body.dataset.totalPrice || "0");  // пример: <body data-total-price="112.00">
+
+  // Обновление UI количества персон
+  function updateQuantityUI() {
+    quantityEl.textContent = quantity;
+    personCountSummary.textContent = quantity;
+  }
+
+  // Обновление видимости поля для сдачи
+  function toggleChangeField() {
+    if (cashOption.checked) {
+      changeFieldWrapper.classList.remove("hidden");
+    } else {
+      changeFieldWrapper.classList.add("hidden");
+      changeAmountSummary.textContent = "—";
+    }
+  }
+
+  // Обновление метода оплаты
+  function updatePaymentSummary() {
+    const selected = document.querySelector('input[name="payment"]:checked');
+    const label = selected ? document.querySelector(`label[for="${selected.id}"]`) : null;
+    paymentMethodSummary.textContent = label ? label.textContent.trim() : "";
+  }
+
+  // Обновление суммы сдачи в правой колонке
+  function updateChangeAmountSummary() {
+    const value = parseFloat(changeInput.value);
+    if (!isNaN(value) && value >= totalPrice) {
+      changeAmountSummary.textContent = `${value.toFixed(2)} zł`;
+      changeInput.classList.remove("is-invalid");
+    } else if (changeInput.value === "") {
+      changeAmountSummary.textContent = "—";
+      changeInput.classList.remove("is-invalid");
+    } else {
+      changeAmountSummary.textContent = "—";
+      changeInput.classList.add("is-invalid");
+    }
+  }
+
+  // Валидация поля сдачи
+  changeInput?.addEventListener("input", () => {
+    changeInput.value = changeInput.value.replace(/[^\d]/g, "");
+    updateChangeAmountSummary();
+  });
+
+  // Слушатели для количества персон
+  increaseBtn?.addEventListener("click", () => {
+    quantity++;
+    updateQuantityUI();
+  });
+
+  decreaseBtn?.addEventListener("click", () => {
+    if (quantity > 1) {
+      quantity--;
+      updateQuantityUI();
+    }
+  });
+
+  // Слушатели изменения метода оплаты
+  paymentOptions.forEach(option => {
+    option.addEventListener("change", () => {
+      toggleChangeField();
+      updatePaymentSummary();
+    });
+  });
+
+  // Инициализация
+  updateQuantityUI();
+  toggleChangeField();
+  updatePaymentSummary();
+
+
+  const form = document.querySelector("form.checkout-form");
+  const submitBtn = document.querySelector('button[type="submit"][form="checkoutForm"]');
+
+  if (submitBtn && form) {
+    submitBtn.addEventListener("click", function (e) {
+      const requiredFields = form.querySelectorAll("[required]");
+      let firstInvalid = null;
+
+      requiredFields.forEach((field) => {
+        if (!field.checkValidity()) {
+          field.classList.add("is-invalid");
+
+          if (!firstInvalid) {
+            firstInvalid = field;
+          }
+        } else {
+          field.classList.remove("is-invalid");
+        }
+      });
+
+      if (firstInvalid) {
+        e.preventDefault();
+        const offsetTop = firstInvalid.getBoundingClientRect().top + window.scrollY - 120;
+        window.scrollTo({ top: offsetTop, behavior: "smooth" });
+
+        // Optional: highlight with a shake or flash animation
+        firstInvalid.focus();
+      }
+    });
+  }
+
+  const deliverySelect = document.getElementById("deliverySchedule");
+  const pickupSummary = document.getElementById("pickupTimeSummary");
+
+  function generateTimeWindows() {
+    const now = new Date();
+    now.setMinutes(now.getMinutes() + 30);
+
+    const roundedMinutes = Math.ceil(now.getMinutes() / 10) * 10;
+    now.setMinutes(roundedMinutes, 0, 0);
+
+    const options = [];
+    for (let i = 0; i < 30; i++) {
+      const start = new Date(now.getTime() + i * 10 * 60000);
+      const end = new Date(start.getTime() + 10 * 60000);
+
+      const format = (d) => d.toTimeString().slice(0, 5);
+      const label = `${format(start)} - ${format(end)}`;
+
+      options.push(label);
+    }
+
+    return options;
+  }
+
+  function populateSchedule() {
+    const windows = generateTimeWindows();
+    deliverySelect.innerHTML = "";
+
+    windows.forEach((slot) => {
+      const opt = document.createElement("option");
+      opt.value = slot;
+      opt.textContent = slot;
+      deliverySelect.appendChild(opt);
+    });
+
+    pickupSummary.textContent = deliverySelect.value;
+  }
+
+  deliverySelect?.addEventListener("change", () => {
+    pickupSummary.textContent = deliverySelect.value;
+  });
+
+  if (deliverySelect) {
+    populateSchedule();
+  }
+
 });
 
-
 // === КОРЗИНА: загрузка и управление ===
-
 function toggleCartSidebar(show = true) {
   const sidebar = document.querySelector('#cartSidebar');
-  if (sidebar) {
-    sidebar.classList.toggle('show', show);
-  }
+  const backdrop = document.querySelector('#cartBackdrop');
+
+  if (!sidebar || !backdrop) return;
+
+  sidebar.classList.toggle('show', show);
+  backdrop.classList.toggle('d-none', !show);
+  backdrop.classList.toggle('show', show);
+  document.body.classList.toggle('cart-open', show);
 }
 
 function loadCartSidebar() {
@@ -125,38 +344,87 @@ function loadCartSidebar() {
     .then(res => res.json())
     .then(data => {
       const container = document.getElementById('cartSidebarContainer');
-      if (container) {
-        container.innerHTML = data.html;
+      if (!container) return;
 
-        // Показать
-        toggleCartSidebar(true);
+      container.innerHTML = data.html;
+      toggleCartSidebar(true);
 
-        // Назначить обработчик кнопки закрытия
-        const closeBtn = document.getElementById('closeCartSidebar');
-        if (closeBtn) {
-          closeBtn.addEventListener('click', () => toggleCartSidebar(false));
-        }
+      // Закрытие по крестику
+      const closeBtn = document.getElementById('closeCartSidebar');
+      if (closeBtn) {
+        closeBtn.addEventListener('click', () => toggleCartSidebar(false));
+      }
+
+      // Закрытие по клику на фон
+      const backdrop = document.getElementById('cartBackdrop');
+      if (backdrop) {
+        backdrop.addEventListener('click', () => toggleCartSidebar(false));
       }
     })
     .catch(err => console.error('Cart load error:', err));
 }
 
-// === Обработка кнопок + и - и обновление суммы ===
-
+// === Добавление в корзину ===
 document.addEventListener("click", function (e) {
-  const quantityEl = document.getElementById("productQuantity");
-  const addBtn = document.getElementById("addToCartBtn");
+  const addBtn = e.target.closest("#addToCartBtn");
+  if (!addBtn) return;
 
-  if (!quantityEl || !addBtn) return;
+  const modal = document.querySelector(".modal-content");
+  if (!modal) return;
 
-  let quantity = parseInt(quantityEl.textContent) || 1;
-  const priceText = addBtn.textContent.match(/(\d+[.,]?\d*)/);
-  const basePrice = priceText ? parseFloat(priceText[1].replace(",", ".")) / quantity : 0;
+  const productId = modal.getAttribute("data-product-id");
+  const quantityInput = modal.querySelector("#productQuantity");
+  const quantity = parseInt(quantityInput.textContent);
 
-  if (e.target.closest("#increaseQty")) quantity++;
-  if (e.target.closest("#decreaseQty") && quantity > 1) quantity--;
+  if (!productId || quantity < 1) return;
 
-  quantityEl.textContent = quantity;
-  const totalPrice = (basePrice * quantity).toFixed(2).replace(".", ",");
-  addBtn.innerHTML = `Add to cart: ${totalPrice} zł`;
+  fetch("/checkout/add-to-cart/", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      "X-CSRFToken": getCookie("csrftoken"),
+    },
+    body: JSON.stringify({ product_id: productId, quantity: quantity }),
+  })
+    .then((res) => res.json())
+    .then((data) => {
+      if (data.success) {
+        updateCartSummary(data.total_quantity, data.total_price);
+
+        if (productModalInstance) {
+          productModalInstance.hide();
+        }
+      } else {
+        alert("Something went wrong while adding to cart.");
+      }
+    })
+    .catch((err) => {
+      console.error("Add to cart error:", err);
+    });
 });
+
+// === Обновление кнопки View Cart ===
+function updateCartSummary(quantity, totalPrice) {
+  const viewCartBtn = document.querySelector("#viewCartSummary");
+  if (viewCartBtn) {
+    viewCartBtn.innerHTML = `In the cart: ${quantity} <span>${totalPrice}</span>`;
+  }
+}
+
+// === Получение CSRF ===
+function getCookie(name) {
+  let cookieValue = null;
+  if (document.cookie && document.cookie !== "") {
+    const cookies = document.cookie.split(";");
+    for (let i = 0; i < cookies.length; i++) {
+      const cookie = cookies[i].trim();
+      if (cookie.startsWith(name + "=")) {
+        cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+        break;
+      }
+    }
+  }
+  return cookieValue;
+}
+
+
