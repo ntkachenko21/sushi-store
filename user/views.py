@@ -1,4 +1,3 @@
-from django.contrib.auth.views import LoginView
 from django.urls import reverse_lazy
 from django.views.generic import CreateView, DetailView
 from django.contrib.auth.mixins import LoginRequiredMixin
@@ -14,7 +13,9 @@ from user.models import CustomUser
 class LoginModalView(View):
     def get(self, request):
         form = CustomLoginForm()
-        return render(request, "includes/modals/login_modal.html", {"form": form})
+        return render(
+            request, "includes/modals/login_modal.html", {"form": form}
+        )
 
     def post(self, request):
         form = CustomLoginForm(data=request.POST)
@@ -22,13 +23,15 @@ class LoginModalView(View):
             user = form.get_user()
             login(request, user)
             return HttpResponseClientRefresh()
-        return render(request, "includes/modals/login_modal.html", {"form": form})
+        return render(
+            request, "includes/modals/login_modal.html", {"form": form}
+        )
 
 
 class CustomRegisterView(CreateView):
-    template_name = 'product/index.html'
+    template_name = "product/index.html"
     form_class = CustomUserCreationForm
-    success_url = reverse_lazy('product:index')
+    success_url = reverse_lazy("product:index")
 
     def form_valid(self, form):
         user = form.save()
@@ -36,15 +39,17 @@ class CustomRegisterView(CreateView):
         return super().form_valid(form)
 
     def form_invalid(self, form):
-        return self.render_to_response(self.get_context_data(
-            form=form,
-            show_signup_modal=True
-        ))
+        return self.render_to_response(
+            self.get_context_data(form=form, show_signup_modal=True)
+        )
+
 
 class SignupModalView(View):
     def get(self, request):
         form = CustomUserCreationForm()
-        return render(request, "includes/modals/signup_modal.html", {"form": form})
+        return render(
+            request, "includes/modals/signup_modal.html", {"form": form}
+        )
 
     def post(self, request):
         form = CustomUserCreationForm(request.POST)
@@ -52,13 +57,15 @@ class SignupModalView(View):
             user = form.save()
             login(request, user)
             return HttpResponseClientRefresh()
-        return render(request, "includes/modals/signup_modal.html", {"form": form})
+        return render(
+            request, "includes/modals/signup_modal.html", {"form": form}
+        )
 
 
 class AccountDetailView(LoginRequiredMixin, DetailView):
     model = CustomUser
-    template_name = 'user/account.html'
-    login_url = 'login'
+    template_name = "user/account.html"
+    login_url = "login"
 
     def get_object(self):
         return self.request.user

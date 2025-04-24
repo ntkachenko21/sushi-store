@@ -31,18 +31,18 @@ button, .btn {
 }
 
 .menu-wrapper {
-  margin-top: 30px;  /* было слишком близко к хэдеру */
+  margin-top: 30px;
   padding-top: 10px;
   margin-right: 100px;
   position: sticky;
-  width: 220px; /* фиксируем ширину */
+  width: 220px;
   max-width: 100%;
   word-wrap: break-word;
   overflow: hidden;
-  top: 96px; /* подогнать под отступ */
-  max-height: 85vh; /* ограничение по высоте */
+  top: 96px;
+  max-height: 85vh;
   overflow-y: auto;
-  padding-right: 5px; /* чтобы скроллбар не налезал на текст */
+  padding-right: 5px;
   z-index: 9;
 }
 
@@ -160,10 +160,8 @@ button, .btn {
   bottom: 50px;
   right: 50px;
   z-index: 1050;
-  /*opacity: 0;*/
   transform: translateY(20px);
   transition: all 0.4s ease-in-out;
-  /*animation: slideUp 0.5s ease-out;*/
 }
 
 .floating-cart-btn.show {
@@ -198,7 +196,7 @@ button, .btn {
   justify-content: space-between;
   align-items: center;
   gap: 1rem;
-  border-radius: 0 0 12px 12px; /* аккуратное завершение */
+  border-radius: 0 0 12px 12px;
   background-color: #fff;
 }
 
@@ -250,7 +248,6 @@ button, .btn {
   padding-right: 6px;
 }
 
-/* Стили кастомной кнопки закрытия */
 .btn-close-custom {
   position: absolute;
   top: 16px;
@@ -300,8 +297,8 @@ button, .btn {
   box-shadow: -4px 0 12px rgba(0, 0, 0, 0.1);
   z-index: 1050;
   transform: translateX(100%);
-  transition: transform 0.35s ease-in-out; /* ✅ ключевая строка */
-  will-change: transform; /* для плавности */
+  transition: transform 0.35s ease-in-out;
+  will-change: transform;
 }
 .cart-sidebar.show {
   transform: translateX(0);
@@ -309,7 +306,7 @@ button, .btn {
 
 .cart-sidebar-body {
   overflow-y: auto;
-  height: calc(100vh - 60px); /* сверху заголовок */
+  height: calc(100vh - 60px);
 }
 
 .custom-backdrop {
@@ -319,7 +316,7 @@ button, .btn {
   width: 100%;
   height: 100%;
   background-color: rgba(0, 0, 0, 0.35);
-  z-index: 1049; /* на 1 меньше, чем у .cart-sidebar */
+  z-index: 1049;
   transition: opacity 0.3s ease;
 }
 
@@ -423,7 +420,7 @@ body.no-scroll {
   background: #fff;
   border-radius: 20px;
   box-shadow: 0 25px 40px rgba(0, 0, 0, 0.1);
-  margin: 2rem 0; /* добавим отступ, чтобы на маленьких экранах не прилипало к краям */
+  margin: 2rem 0;
 }
 
 .auth-box h2 {
@@ -439,7 +436,7 @@ body.no-scroll {
 }
 
 .form-control.pe-5 {
-  padding-right: 2.5rem; /* Чтобы иконка не налезала на текст */
+  padding-right: 2.5rem;
 }
 
 .auth-box .form-control {
@@ -487,19 +484,6 @@ body.no-scroll {
   }
 }
 
-/*.site-header {*/
-/*  width: 100%;*/
-/*  padding: 1rem 2rem;*/
-/*  background-color: #fff;*/
-/*  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);*/
-/*  display: flex;*/
-/*  align-items: center;*/
-/*  justify-content: space-between;*/
-/*  position: sticky;*/
-/*  top: 0;*/
-/*  z-index: 1000;*/
-/*}*/
-
 .site-header .nav-link {
   font-weight: 500;
   color: #333;
@@ -523,7 +507,6 @@ body.no-scroll {
   font-weight: 500;
 }
 
-/* === УЛУЧШЕННЫЙ ФУТЕР === */
 .modern-footer {
   background-color: #f8f9fa;
   color: #343a40;
@@ -673,7 +656,6 @@ body.no-scroll {
   color: #fff;
 }
 
-/* Модальное окно логина */
 .login-modal {
   background: #ffffff;
   border-radius: 16px;
@@ -723,7 +705,6 @@ body.no-scroll {
   box-shadow: 0 10px 20px rgba(0, 123, 255, 0.2);
 }
 
-/* Анимация появления */
 @keyframes fadeInUp {
   0% {
     opacity: 0;
@@ -735,7 +716,6 @@ body.no-scroll {
   }
 }
 
-/* Обёртка должна быть относительной */
 .form-group.position-relative {
   position: relative;
 }
@@ -820,7 +800,6 @@ body.no-scroll {
   border-radius: 20px !important;
 }
 
-/* Скругление элементов формы */
 .checkout-form .form-control,
 .checkout-form .form-select,
 .checkout-form textarea,
@@ -830,13 +809,7 @@ body.no-scroll {
   border-radius: 12px !important;
 }
 
-/* Кнопки + / −
-.checkout-form .btn-outline-secondary,
-.checkout-form .btn-outline-primary {
-  border-radius: 12px !important;
-}
 
-/* Карточка заказа */
 .checkout-summary .list-group-item {
   border-radius: 12px;
   margin-bottom: 0.5rem;
@@ -877,7 +850,6 @@ body.no-scroll {
   padding-top: 0 !important;
 }
 
-/* Скрытие стандартных радио-кнопок */
 input[type="radio"].btn-check {
   position: absolute;
   opacity: 0;
@@ -915,16 +887,16 @@ input[type="radio"].btn-check {
 }
 
 .comment-field {
-  resize: none;             /* запрещаем ручное растягивание */
-  min-height: 100px;        /* выше по умолчанию */
-  overflow-y: hidden;       /* скроем скролл, пусть растёт сама */
+  resize: none;
+  min-height: 100px;
+  overflow-y: hidden;
   transition: height 0.2s ease;
 }
 
 .checkout-form input:focus,
 .checkout-form textarea:focus {
   border-color: #0d6efd;
-  box-shadow: 0 0 0 0.2rem rgba(13, 110, 253, 0.15); /* мягкое голубое свечение */
+  box-shadow: 0 0 0 0.2rem rgba(13, 110, 253, 0.15);
   background-color: transparent;
   transition: all 0.3s ease;
 }
@@ -979,7 +951,7 @@ input[type="radio"].btn-check {
 
 .back-to-menu-link:hover {
   opacity: 0.7;
-  text-decoration: none; /* отключает подчёркивание */
+  text-decoration: none;
 }
 
 .apple-select-wrapper {
@@ -1011,7 +983,6 @@ input[type="radio"].btn-check {
   border: 1px solid #ddd;
   border-radius: 12px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02);
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' fill='none' stroke='%23999' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9' /%3E%3C/svg%3E");
   background-repeat: no-repeat;
   background-position: right 1rem center;
   background-size: 1rem;
@@ -1042,7 +1013,7 @@ input[type="radio"].btn-check {
   width: 100%;
   height: 100%;
   background-color: rgba(0, 0, 0, 0.35);
-  z-index: 1049; /* меньше, чем у #cartSidebar (1050) */
+  z-index: 1049;
   transition: opacity 0.3s ease;
 }
 

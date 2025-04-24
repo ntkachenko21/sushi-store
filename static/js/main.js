@@ -1,10 +1,10 @@
-// === Глобальная переменная для модального окна продукта ===
+// === Global variable for the product modal ===
 let productModalInstance = null;
 
 function openProductModal(productId) {
-  fetch(`/product/${productId}/`)
-    .then(response => response.text())
-    .then(html => {
+  fetch(`/products/${productId}/`)
+    .then((response) => response.text())
+    .then((html) => {
       const modalContent = document.getElementById("productModalContent");
       if (modalContent) {
         modalContent.innerHTML = html;
@@ -25,31 +25,38 @@ function openProductModal(productId) {
 
         let quantity = 1;
         const basePrice = parseFloat(
-          addBtn?.dataset.price || addBtn?.textContent.match(/[\d.,]+/)[0].replace(",", ".")
+          addBtn?.dataset.price ||
+            addBtn?.textContent.match(/[\d.,]+/)[0].replace(",", "."),
         );
 
         const updateUI = () => {
           quantityEl.textContent = quantity;
-          const totalPrice = (basePrice * quantity).toFixed(2).replace(".", ",");
+          const totalPrice = (basePrice * quantity)
+            .toFixed(2)
+            .replace(".", ",");
           addBtn.innerHTML = `Add to cart: ${totalPrice} zł`;
         };
 
-        modalContent.querySelector("#increaseQty")?.addEventListener("click", () => {
-          quantity++;
-          updateUI();
-        });
-
-        modalContent.querySelector("#decreaseQty")?.addEventListener("click", () => {
-          if (quantity > 1) {
-            quantity--;
+        modalContent
+          .querySelector("#increaseQty")
+          ?.addEventListener("click", () => {
+            quantity++;
             updateUI();
-          }
-        });
+          });
+
+        modalContent
+          .querySelector("#decreaseQty")
+          ?.addEventListener("click", () => {
+            if (quantity > 1) {
+              quantity--;
+              updateUI();
+            }
+          });
 
         updateUI();
       }
     })
-    .catch(error => {
+    .catch((error) => {
       console.error("Error loading product modal:", error);
     });
 }
@@ -73,7 +80,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
   function smoothScrollTo(target) {
     const offset = 100;
-    const targetPosition = target.getBoundingClientRect().top + window.scrollY - offset;
+    const targetPosition =
+      target.getBoundingClientRect().top + window.scrollY - offset;
     const startPosition = window.scrollY;
     const distance = targetPosition - startPosition;
     const duration = 600;
@@ -83,9 +91,8 @@ document.addEventListener("DOMContentLoaded", function () {
       if (!start) start = timestamp;
       const progress = timestamp - start;
 
-      const ease = t => t < 0.5
-        ? 4 * t * t * t
-        : 1 - Math.pow(-2 * t + 2, 3) / 2;
+      const ease = (t) =>
+        t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
 
       const percent = Math.min(progress / duration, 1);
       window.scrollTo(0, startPosition + distance * ease(percent));
@@ -98,7 +105,7 @@ document.addEventListener("DOMContentLoaded", function () {
     window.requestAnimationFrame(step);
   }
 
-  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
     anchor.addEventListener("click", function (e) {
       const target = document.querySelector(this.getAttribute("href"));
       if (target) {
@@ -109,21 +116,21 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
   const sections = document.querySelectorAll('section[id^="category-"]');
-  const menuLinks = document.querySelectorAll('.menu-wrapper a');
+  const menuLinks = document.querySelectorAll(".menu-wrapper a");
 
   function activateMenuLink() {
     const scrollOffset = 30;
     let currentId = null;
 
-    sections.forEach(section => {
+    sections.forEach((section) => {
       const rect = section.getBoundingClientRect();
       if (rect.top <= scrollOffset && rect.bottom > scrollOffset) {
         currentId = section.id;
       }
     });
 
-    menuLinks.forEach(link => {
-      if (link.getAttribute('href') === `#${currentId}`) {
+    menuLinks.forEach((link) => {
+      if (link.getAttribute("href") === `#${currentId}`) {
         link.classList.add("active");
       } else {
         link.classList.remove("active");
@@ -174,15 +181,15 @@ document.addEventListener("DOMContentLoaded", function () {
   const personCountSummary = document.getElementById("personCountSummary");
 
   let quantity = 1;
-  let totalPrice = parseFloat(document.body.dataset.totalPrice || "0");  // пример: <body data-total-price="112.00">
+  let totalPrice = parseFloat(document.body.dataset.totalPrice || "0"); // example: <body data-total-price="112.00">
 
-  // Обновление UI количества персон
+  // Updating UI for the quantity of people
   function updateQuantityUI() {
     quantityEl.textContent = quantity;
     personCountSummary.textContent = quantity;
   }
 
-  // Обновление видимости поля для сдачи
+  // Toggle visibility of the change field
   function toggleChangeField() {
     if (cashOption.checked) {
       changeFieldWrapper.classList.remove("hidden");
@@ -192,14 +199,16 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   }
 
-  // Обновление метода оплаты
+  // Update the payment method summary
   function updatePaymentSummary() {
     const selected = document.querySelector('input[name="payment"]:checked');
-    const label = selected ? document.querySelector(`label[for="${selected.id}"]`) : null;
+    const label = selected
+      ? document.querySelector(`label[for="${selected.id}"]`)
+      : null;
     paymentMethodSummary.textContent = label ? label.textContent.trim() : "";
   }
 
-  // Обновление суммы сдачи в правой колонке
+  // Update the change amount in the summary
   function updateChangeAmountSummary() {
     const value = parseFloat(changeInput.value);
     if (!isNaN(value) && value >= totalPrice) {
@@ -214,13 +223,13 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   }
 
-  // Валидация поля сдачи
+  // Validate the change field
   changeInput?.addEventListener("input", () => {
-    changeInput.value = changeInput.value.replace(/[^\d]/g, "");
+    changeInput.value = changeInput.value.replace(/\D/g, "");
     updateChangeAmountSummary();
   });
 
-  // Слушатели для количества персон
+  // Event listeners for the number of people
   increaseBtn?.addEventListener("click", () => {
     quantity++;
     updateQuantityUI();
@@ -233,22 +242,23 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 
-  // Слушатели изменения метода оплаты
-  paymentOptions.forEach(option => {
+  // Listeners for changing the payment method
+  paymentOptions.forEach((option) => {
     option.addEventListener("change", () => {
       toggleChangeField();
       updatePaymentSummary();
     });
   });
 
-  // Инициализация
+  // Initialization
   updateQuantityUI();
   toggleChangeField();
   updatePaymentSummary();
 
-
   const form = document.querySelector("form.checkout-form");
-  const submitBtn = document.querySelector('button[type="submit"][form="checkoutForm"]');
+  const submitBtn = document.querySelector(
+    'button[type="submit"][form="checkoutForm"]',
+  );
 
   if (submitBtn && form) {
     submitBtn.addEventListener("click", function (e) {
@@ -269,7 +279,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
       if (firstInvalid) {
         e.preventDefault();
-        const offsetTop = firstInvalid.getBoundingClientRect().top + window.scrollY - 120;
+        const offsetTop =
+          firstInvalid.getBoundingClientRect().top + window.scrollY - 120;
         window.scrollTo({ top: offsetTop, behavior: "smooth" });
 
         // Optional: highlight with a shake or flash animation
@@ -323,48 +334,47 @@ document.addEventListener("DOMContentLoaded", function () {
   if (deliverySelect) {
     populateSchedule();
   }
-
 });
 
-// === КОРЗИНА: загрузка и управление ===
+// === CART: loading and management ===
 function toggleCartSidebar(show = true) {
-  const sidebar = document.querySelector('#cartSidebar');
-  const backdrop = document.querySelector('#cartBackdrop');
+  const sidebar = document.querySelector("#cartSidebar");
+  const backdrop = document.querySelector("#cartBackdrop");
 
   if (!sidebar || !backdrop) return;
 
-  sidebar.classList.toggle('show', show);
-  backdrop.classList.toggle('d-none', !show);
-  backdrop.classList.toggle('show', show);
-  document.body.classList.toggle('cart-open', show);
+  sidebar.classList.toggle("show", show);
+  backdrop.classList.toggle("d-none", !show);
+  backdrop.classList.toggle("show", show);
+  document.body.classList.toggle("cart-open", show);
 }
 
 function loadCartSidebar() {
-  fetch('/checkout/cart/')
-    .then(res => res.json())
-    .then(data => {
-      const container = document.getElementById('cartSidebarContainer');
+  fetch("/checkout/cart/")
+    .then((res) => res.json())
+    .then((data) => {
+      const container = document.getElementById("cartSidebarContainer");
       if (!container) return;
 
       container.innerHTML = data.html;
       toggleCartSidebar(true);
 
-      // Закрытие по крестику
-      const closeBtn = document.getElementById('closeCartSidebar');
+      // Close button handling
+      const closeBtn = document.getElementById("closeCartSidebar");
       if (closeBtn) {
-        closeBtn.addEventListener('click', () => toggleCartSidebar(false));
+        closeBtn.addEventListener("click", () => toggleCartSidebar(false));
       }
 
-      // Закрытие по клику на фон
-      const backdrop = document.getElementById('cartBackdrop');
+      // Close by clicking the backdrop
+      const backdrop = document.getElementById("cartBackdrop");
       if (backdrop) {
-        backdrop.addEventListener('click', () => toggleCartSidebar(false));
+        backdrop.addEventListener("click", () => toggleCartSidebar(false));
       }
     })
-    .catch(err => console.error('Cart load error:', err));
+    .catch((err) => console.error("Cart load error:", err));
 }
 
-// === Добавление в корзину ===
+// === Adding to cart ===
 document.addEventListener("click", function (e) {
   const addBtn = e.target.closest("#addToCartBtn");
   if (!addBtn) return;
@@ -403,7 +413,7 @@ document.addEventListener("click", function (e) {
     });
 });
 
-// === Обновление кнопки View Cart ===
+// === Update button View Cart ===
 function updateCartSummary(quantity, totalPrice) {
   const viewCartBtn = document.querySelector("#viewCartSummary");
   if (viewCartBtn) {
@@ -411,7 +421,7 @@ function updateCartSummary(quantity, totalPrice) {
   }
 }
 
-// === Получение CSRF ===
+// === Getting CSRF ===
 function getCookie(name) {
   let cookieValue = null;
   if (document.cookie && document.cookie !== "") {
@@ -426,5 +436,3 @@ function getCookie(name) {
   }
   return cookieValue;
 }
-
-

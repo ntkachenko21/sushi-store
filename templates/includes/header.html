@@ -9,20 +9,20 @@
       <a href="/" class="nav-link">Home</a>
 
       {% if user.is_authenticated %}
-        <a href="{% url 'account' %}" class="nav-link">
+        <a href="{% url 'user:account' %}" class="nav-link">
           <i class="bi bi-person-circle nav-user-icon"></i>
         </a>
       {% else %}
         <a href="#"
            class="nav-link"
-           hx-get="{% url 'login_modal' %}"
+           hx-get="{% url 'user:login_modal' %}"
            hx-target="#dialog"
            hx-swap="innerHTML">
           Login
         </a>
         <button 
           class="btn btn-outline-primary ml-2"
-          hx-get="{% url 'signup_modal' %}" 
+          hx-get="{% url 'user:signup_modal' %}" 
           hx-target="#dialog" 
           hx-swap="innerHTML"
           type="button"
@@ -41,20 +41,20 @@
     <a href="/" class="d-block py-2 border-bottom">Home</a>
 
     {% if user.is_authenticated %}
-      <a href="{% url 'account' %}" class="d-block py-2 border-bottom">
+      <a href="{% url 'user:account' %}" class="d-block py-2 border-bottom">
         <i class="bi bi-person-circle mr-2 nav-user-icon"></i> My Account
       </a>
     {% else %}
       <a href="#"
          class="d-block py-2 border-bottom"
-         hx-get="{% url 'login_modal' %}"
+         hx-get="{% url 'user:login_modal' %}"
          hx-target="#dialog"
          hx-swap="innerHTML">
         Login
       </a>
       <button 
         class="d-block py-2 btn btn-primary mt-2 w-100"
-        hx-get="{% url 'signup_modal' %}" 
+        hx-get="{% url 'user:signup_modal' %}" 
         hx-target="#dialog" 
         hx-swap="innerHTML"
         type="button"

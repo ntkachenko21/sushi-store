@@ -25,7 +25,10 @@ class Migration(migrations.Migration):
                         verbose_name="ID",
                     ),
                 ),
-                ("total_price", models.DecimalField(decimal_places=2, max_digits=7)),
+                (
+                    "total_price",
+                    models.DecimalField(decimal_places=2, max_digits=7),
+                ),
             ],
         ),
         migrations.CreateModel(
@@ -41,8 +44,14 @@ class Migration(migrations.Migration):
                     ),
                 ),
                 ("quantity", models.PositiveIntegerField()),
-                ("unit_price", models.DecimalField(decimal_places=2, max_digits=7)),
-                ("total_price", models.DecimalField(decimal_places=2, max_digits=9)),
+                (
+                    "unit_price",
+                    models.DecimalField(decimal_places=2, max_digits=7),
+                ),
+                (
+                    "total_price",
+                    models.DecimalField(decimal_places=2, max_digits=9),
+                ),
                 (
                     "cart",
                     models.ForeignKey(

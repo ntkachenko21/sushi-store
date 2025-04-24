@@ -12,7 +12,7 @@
             <strong>{{ item.product.title }}</strong><br>
             <small>{{ item.quantity }} × {{ item.product.price }} zł</small>
           </div>
-          <span>{{ item.total|floatformat:2 }} zł</span>
+          <span>{{ item.total_price|floatformat:2 }} zł</span>
         </div>
       {% endfor %}  
 

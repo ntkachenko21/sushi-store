@@ -4,7 +4,7 @@
   <h4 class="mb-3 text-center">Create Account</h4>
 
   <form method="post"
-        hx-post="{% url 'signup_modal' %}"
+        hx-post="{% url 'user:signup_modal' %}"
         hx-target="#dialog"
         hx-swap="innerHTML">
     {% csrf_token %}
@@ -33,7 +33,7 @@
     <button 
       type="button"
       class="p-0 border-0 bg-transparent text-primary small"
-      hx-get="{% url 'login_modal' %}" 
+      hx-get="{% url 'user:login_modal' %}" 
       hx-target="#dialog" 
       hx-swap="innerHTML"
       data-bs-dismiss="modal"

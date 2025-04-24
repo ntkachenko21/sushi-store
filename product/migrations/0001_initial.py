@@ -59,7 +59,10 @@ class Migration(migrations.Migration):
                 ),
                 ("title", models.CharField(max_length=63, unique=True)),
                 ("price", models.DecimalField(decimal_places=2, max_digits=6)),
-                ("image", models.ImageField(blank=True, null=True, upload_to="")),
+                (
+                    "image",
+                    models.ImageField(blank=True, null=True, upload_to=""),
+                ),
                 ("weight", models.PositiveIntegerField(blank=True, null=True)),
                 (
                     "category",

@@ -6,7 +6,6 @@ urlpatterns = [
     path("admin/", admin.site.urls),
     path("__debug__/", include("debug_toolbar.urls")),
     path("", include("product.urls", namespace="product")),
-    path('checkout/', include('checkout.urls')),
-    path('user/', include('user.urls')),
-
+    path("checkout/", include("checkout.urls")),
+    path("user/", include("user.urls")),
 ]
