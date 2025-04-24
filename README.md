@@ -1,8 +1,5 @@
 # 🍣 Sushi Ordering Web App
 
-[![Awesome Badge](https://img.shields.io/badge/Awesome-Yes-brightgreen.svg)](https://shields.io/)
-[![GitHub Stars](https://img.shields.io/github/stars/yourusername/yourrepository.svg?style=social&label=Stars)](https://github.com/ntkachenko21/sushi-store)
-
 **A modern and elegant web application for online sushi ordering. Users can conveniently select dishes, specify preferences, make payments, and schedule orders for pickup at a desired time.**
 
 ## Table of Contents
@@ -12,9 +9,6 @@
 - [Getting Started](#getting-started)
   - [Prerequisites](#prerequisites)
   - [Installation](#installation)
-
-
-
 
 
 ## Introduction
@@ -34,15 +28,6 @@ Key features of the Sushi Ordering Web App include:
 ## Getting Started
 
 This section will help you set up the project locally and get it running.
-
-### Prerequisites
-
-Before starting the project, make sure you have the following installed:
-
-- [Python](https://www.python.org/): Version 3.8 or higher
-- [pip](https://pypi.org/project/pip/): Python package installer
-- [Git](https://git-scm.com/): For version control
-- [Node.js](https://nodejs.org/): Version 16 or higher (optional, depending on project)
 
 ### Installation
 
