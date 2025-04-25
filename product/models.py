@@ -50,4 +50,4 @@ class Ingredient(models.Model):
     is_allergen = models.BooleanField()
 
     def __str__(self):
-        return f"{self.name}{" (allergen)" if self.is_allergen else ""}"
+        return f"{self.name}{' (allergen)' if self.is_allergen else ''}"
