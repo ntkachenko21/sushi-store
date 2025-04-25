@@ -1,0 +1,181 @@
+[
+  {
+    "model": "product.product",
+    "pk": 32,
+    "fields": {
+      "title": "Tokyo Fire Roll",
+      "price": "48.00",
+      "image": null,
+      "weight": 310,
+      "category": 5,
+      "ingredients": [
+        5,
+        2,
+        16,
+        12,
+        13
+      ]
+    }
+  },
+  {
+    "model": "product.product",
+    "pk": 33,
+    "fields": {
+      "title": "Creamy Shrimp Maki",
+      "price": "46.00",
+      "image": null,
+      "weight": 300,
+      "category": 3,
+      "ingredients": [
+        4,
+        3,
+        12,
+        13,
+        6
+      ]
+    }
+  },
+  {
+    "model": "product.product",
+    "pk": 34,
+    "fields": {
+      "title": "Vegan Futomaki",
+      "price": "38.00",
+      "image": null,
+      "weight": 270,
+      "category": 10,
+      "ingredients": [
+        24,
+        9,
+        2,
+        6,
+        12,
+        13
+      ]
+    }
+  },
+  {
+    "model": "product.product",
+    "pk": 35,
+    "fields": {
+      "title": "Dragon Crunch",
+      "price": "52.00",
+      "image": null,
+      "weight": 340,
+      "category": 8,
+      "ingredients": [
+        4,
+        22,
+        1,
+        12,
+        13
+      ]
+    }
+  },
+  {
+    "model": "product.product",
+    "pk": 36,
+    "fields": {
+      "title": "Sunset Philadelphia",
+      "price": "50.00",
+      "image": null,
+      "weight": 320,
+      "category": 3,
+      "ingredients": [
+        1,
+        3,
+        9,
+        12,
+        13
+      ]
+    }
+  },
+  {
+    "model": "product.product",
+    "pk": 37,
+    "fields": {
+      "title": "Unagi Deluxe",
+      "price": "58.00",
+      "image": null,
+      "weight": 330,
+      "category": 7,
+      "ingredients": [
+        7,
+        15,
+        12,
+        13
+      ]
+    }
+  },
+  {
+    "model": "product.product",
+    "pk": 38,
+    "fields": {
+      "title": "Tempura Surprise",
+      "price": "45.00",
+      "image": null,
+      "weight": 280,
+      "category": 5,
+      "ingredients": [
+        4,
+        11,
+        6,
+        12,
+        13
+      ]
+    }
+  },
+  {
+    "model": "product.product",
+    "pk": 39,
+    "fields": {
+      "title": "Crispy Tuna Dog",
+      "price": "49.00",
+      "image": null,
+      "weight": 350,
+      "category": 2,
+      "ingredients": [
+        5,
+        22,
+        3,
+        6,
+        12,
+        13
+      ]
+    }
+  },
+  {
+    "model": "product.product",
+    "pk": 40,
+    "fields": {
+      "title": "Avocado Classic",
+      "price": "35.00",
+      "image": null,
+      "weight": 260,
+      "category": 4,
+      "ingredients": [
+        2,
+        12,
+        13
+      ]
+    }
+  },
+  {
+    "model": "product.product",
+    "pk": 41,
+    "fields": {
+      "title": "Gunkan Mix",
+      "price": "17.00",
+      "image": null,
+      "weight": 2,
+      "category": 12,
+      "ingredients": [
+        5,
+        8,
+        14,
+        12,
+        13
+      ]
+    }
+  }
+]

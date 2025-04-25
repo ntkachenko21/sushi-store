@@ -1,0 +1,1688 @@
+[
+  {
+    "model": "product.product",
+    "pk": 500,
+    "fields": {
+      "title": "Set \"Nigiri\" 8 pcs",
+      "image": null,
+      "price": 38.98,
+      "weight": 360,
+      "category": 4,
+      "ingredients": [
+        16,
+        5,
+        26,
+        18
+      ]
+    }
+  },
+  {
+    "model": "product.product",
+    "pk": 501,
+    "fields": {
+      "title": "Salmon Sushi-Dog",
+      "image": null,
+      "price": 38.03,
+      "weight": 360,
+      "category": 3,
+      "ingredients": [
+        14,
+        12,
+        24,
+        8
+      ]
+    }
+  },
+  {
+    "model": "product.product",
+    "pk": 502,
+    "fields": {
+      "title": "Tuna Sushi-Dog",
+      "image": null,
+      "price": 48.2,
+      "weight": 260,
+      "category": 3,
+      "ingredients": [
+        24,
+        20,
+        26,
+        17,
+        18,
+        12
+      ]
+    }
+  },
+  {
+    "model": "product.product",
+    "pk": 503,
+    "fields": {
+      "title": "Sushi-Dog with shrimps",
+      "image": null,
+      "price": 38.29,
+      "weight": 340,
+      "category": 2,
+      "ingredients": [
+        5,
+        6,
+        15,
+        20
+      ]
+    }
+  },
+  {
+    "model": "product.product",
+    "pk": 504,
+    "fields": {
+      "title": "Burger Maxi Fish",
+      "image": null,
+      "price": 51.1,
+      "weight": 300,
+      "category": 1,
+      "ingredients": [
+        12,
+        11,
+        5,
+        6
+      ]
+    }
+  },
+  {
+    "model": "product.product",
+    "pk": 505,
+    "fields": {
+      "title": "Burger Maxi Salmon",
+      "image": null,
+      "price": 49.57,
+      "weight": 340,
+      "category": 4,
+      "ingredients": [
+        24,
+        6,
+        5,
+        4
+      ]
+    }
+  },
+  {
+    "model": "product.product",
+    "pk": 506,
+    "fields": {
+      "title": "Burger Baked Salmon",
+      "image": null,
+      "price": 59.02,
+      "weight": 340,
+      "category": 4,
+      "ingredients": [
+        16,
+        12,
+        24,
+        22,
+        13,
+        15
+      ]
+    }
+  },
+  {
+    "model": "product.product",
+    "pk": 507,
+    "fields": {
+      "title": "Burger Maxi Shripms",
+      "image": null,
+      "price": 58.21,
+      "weight": 280,
+      "category": 6,
+      "ingredients": [
+        4,
+        26,
+        9,
+        24
+      ]
+    }
+  },
+  {
+    "model": "product.product",
+    "pk": 508,
+    "fields": {
+      "title": "Burger Spicy Tuna",
+      "image": null,
+      "price": 54.92,
+      "weight": 320,
+      "category": 4,
+      "ingredients": [
+        6,
+        13,
+        5
+      ]
+    }
+  },
+  {
+    "model": "product.product",
+    "pk": 509,
+    "fields": {
+      "title": "Burger Baked Tuna",
+      "image": null,
+      "price": 37.72,
+      "weight": 280,
+      "category": 1,
+      "ingredients": [
+        4,
+        10,
+        24,
+        7,
+        25
+      ]
+    }
+  },
+  {
+    "model": "product.product",
+    "pk": 510,
+    "fields": {
+      "title": "Almond Burger with shrimps",
+      "image": null,
+      "price": 38.56,
+      "weight": 260,
+      "category": 4,
+      "ingredients": [
+        5,
+        1,
+        11,
+        15,
+        9
+      ]
+    }
+  },
+  {
+    "model": "product.product",
+    "pk": 511,
+    "fields": {
+      "title": "Burger Maxi Krab",
+      "image": null,
+      "price": 53.05,
+      "weight": 340,
+      "category": 1,
+      "ingredients": [
+        11,
+        7,
+        25,
+        8
+      ]
+    }
+  },
+  {
+    "model": "product.product",
+    "pk": 512,
+    "fields": {
+      "title": "Burger Maxi Unagi",
+      "image": null,
+      "price": 50.23,
+      "weight": 280,
+      "category": 4,
+      "ingredients": [
+        1,
+        13,
+        19,
+        23,
+        25
+      ]
+    }
+  },
+  {
+    "model": "product.product",
+    "pk": 513,
+    "fields": {
+      "title": "Burger Maxi Vege",
+      "image": null,
+      "price": 40.6,
+      "weight": 320,
+      "category": 5,
+      "ingredients": [
+        12,
+        15,
+        25,
+        19,
+        3,
+        22
+      ]
+    }
+  },
+  {
+    "model": "product.product",
+    "pk": 514,
+    "fields": {
+      "title": "Philadelphia Grill-Salmon",
+      "image": null,
+      "price": 52.19,
+      "weight": 320,
+      "category": 4,
+      "ingredients": [
+        21,
+        17,
+        24,
+        13
+      ]
+    }
+  },
+  {
+    "model": "product.product",
+    "pk": 515,
+    "fields": {
+      "title": "Philadelphia Eel",
+      "image": null,
+      "price": 37.55,
+      "weight": 300,
+      "category": 1,
+      "ingredients": [
+        21,
+        2,
+        5,
+        25,
+        16
+      ]
+    }
+  },
+  {
+    "model": "product.product",
+    "pk": 516,
+    "fields": {
+      "title": "Philadelphia Salmon-Unagi",
+      "image": null,
+      "price": 47.75,
+      "weight": 340,
+      "category": 3,
+      "ingredients": [
+        1,
+        17,
+        9,
+        14,
+        20,
+        4
+      ]
+    }
+  },
+  {
+    "model": "product.product",
+    "pk": 517,
+    "fields": {
+      "title": "Philadelphia Ebi",
+      "image": null,
+      "price": 55.91,
+      "weight": 320,
+      "category": 4,
+      "ingredients": [
+        5,
+        16,
+        18,
+        21,
+        23
+      ]
+    }
+  },
+  {
+    "model": "product.product",
+    "pk": 518,
+    "fields": {
+      "title": "Philadelphia Tuna",
+      "image": null,
+      "price": 37.81,
+      "weight": 280,
+      "category": 5,
+      "ingredients": [
+        23,
+        14,
+        5,
+        2
+      ]
+    }
+  },
+  {
+    "model": "product.product",
+    "pk": 519,
+    "fields": {
+      "title": "California Tobiko-Salmon",
+      "image": null,
+      "price": 50.52,
+      "weight": 360,
+      "category": 4,
+      "ingredients": [
+        8,
+        15,
+        4,
+        7
+      ]
+    }
+  },
+  {
+    "model": "product.product",
+    "pk": 520,
+    "fields": {
+      "title": "California Sesame-Salmon",
+      "image": null,
+      "price": 46.99,
+      "weight": 260,
+      "category": 4,
+      "ingredients": [
+        25,
+        21,
+        8,
+        11,
+        6
+      ]
+    }
+  },
+  {
+    "model": "product.product",
+    "pk": 521,
+    "fields": {
+      "title": "California Tobiko-Shrimp",
+      "image": null,
+      "price": 38.12,
+      "weight": 260,
+      "category": 6,
+      "ingredients": [
+        16,
+        17,
+        12,
+        24,
+        5,
+        3
+      ]
+    }
+  },
+  {
+    "model": "product.product",
+    "pk": 522,
+    "fields": {
+      "title": "California Sesame-Shrimp",
+      "image": null,
+      "price": 59.93,
+      "weight": 360,
+      "category": 6,
+      "ingredients": [
+        1,
+        16,
+        9,
+        2,
+        3
+      ]
+    }
+  },
+  {
+    "model": "product.product",
+    "pk": 523,
+    "fields": {
+      "title": "California Tobiko-Tuna",
+      "image": null,
+      "price": 45.88,
+      "weight": 300,
+      "category": 3,
+      "ingredients": [
+        16,
+        4,
+        23,
+        24,
+        8,
+        2
+      ]
+    }
+  },
+  {
+    "model": "product.product",
+    "pk": 524,
+    "fields": {
+      "title": "California Sesame-Tuna",
+      "image": null,
+      "price": 58.01,
+      "weight": 280,
+      "category": 4,
+      "ingredients": [
+        6,
+        15,
+        16,
+        4
+      ]
+    }
+  },
+  {
+    "model": "product.product",
+    "pk": 525,
+    "fields": {
+      "title": "Tempura Roll with shrimps",
+      "image": null,
+      "price": 56.69,
+      "weight": 280,
+      "category": 2,
+      "ingredients": [
+        26,
+        17,
+        18,
+        9,
+        3,
+        12
+      ]
+    }
+  },
+  {
+    "model": "product.product",
+    "pk": 526,
+    "fields": {
+      "title": "Tempura Roll with surimi",
+      "image": null,
+      "price": 53.0,
+      "weight": 360,
+      "category": 3,
+      "ingredients": [
+        16,
+        7,
+        11,
+        20,
+        25,
+        22
+      ]
+    }
+  },
+  {
+    "model": "product.product",
+    "pk": 527,
+    "fields": {
+      "title": "Tempura Roll with eel",
+      "image": null,
+      "price": 47.15,
+      "weight": 340,
+      "category": 6,
+      "ingredients": [
+        4,
+        14,
+        17,
+        13,
+        26,
+        8
+      ]
+    }
+  },
+  {
+    "model": "product.product",
+    "pk": 528,
+    "fields": {
+      "title": "Baked roll Midori",
+      "image": null,
+      "price": 45.92,
+      "weight": 300,
+      "category": 6,
+      "ingredients": [
+        12,
+        10,
+        17,
+        4,
+        23,
+        15
+      ]
+    }
+  },
+  {
+    "model": "product.product",
+    "pk": 529,
+    "fields": {
+      "title": "Baked roll Katsu",
+      "image": null,
+      "price": 57.38,
+      "weight": 340,
+      "category": 5,
+      "ingredients": [
+        23,
+        17,
+        13,
+        7,
+        26,
+        5
+      ]
+    }
+  },
+  {
+    "model": "product.product",
+    "pk": 530,
+    "fields": {
+      "title": "Baked roll Kani",
+      "image": null,
+      "price": 38.73,
+      "weight": 260,
+      "category": 6,
+      "ingredients": [
+        17,
+        18,
+        2,
+        8
+      ]
+    }
+  },
+  {
+    "model": "product.product",
+    "pk": 531,
+    "fields": {
+      "title": "Baked roll with shrimps",
+      "image": null,
+      "price": 54.64,
+      "weight": 360,
+      "category": 6,
+      "ingredients": [
+        18,
+        15,
+        5,
+        25,
+        24,
+        9
+      ]
+    }
+  },
+  {
+    "model": "product.product",
+    "pk": 532,
+    "fields": {
+      "title": "Baked roll with salmon",
+      "image": null,
+      "price": 36.9,
+      "weight": 360,
+      "category": 5,
+      "ingredients": [
+        9,
+        19,
+        25,
+        3,
+        10
+      ]
+    }
+  },
+  {
+    "model": "product.product",
+    "pk": 533,
+    "fields": {
+      "title": "Baked roll with tuna",
+      "image": null,
+      "price": 35.16,
+      "weight": 320,
+      "category": 4,
+      "ingredients": [
+        14,
+        18,
+        26,
+        16
+      ]
+    }
+  },
+  {
+    "model": "product.product",
+    "pk": 534,
+    "fields": {
+      "title": "Baked roll Tamago-Tuna",
+      "image": null,
+      "price": 52.03,
+      "weight": 260,
+      "category": 3,
+      "ingredients": [
+        5,
+        1,
+        8,
+        17,
+        9
+      ]
+    }
+  },
+  {
+    "model": "product.product",
+    "pk": 535,
+    "fields": {
+      "title": "Baked roll Tamago-Salmon",
+      "image": null,
+      "price": 57.41,
+      "weight": 340,
+      "category": 3,
+      "ingredients": [
+        9,
+        23,
+        4,
+        12,
+        1,
+        10
+      ]
+    }
+  },
+  {
+    "model": "product.product",
+    "pk": 536,
+    "fields": {
+      "title": "Baked roll with eel",
+      "image": null,
+      "price": 38.51,
+      "weight": 360,
+      "category": 5,
+      "ingredients": [
+        3,
+        13,
+        1,
+        26,
+        6
+      ]
+    }
+  },
+  {
+    "model": "product.product",
+    "pk": 537,
+    "fields": {
+      "title": "Baked roll with crab",
+      "image": null,
+      "price": 42.06,
+      "weight": 300,
+      "category": 5,
+      "ingredients": [
+        3,
+        4,
+        26
+      ]
+    }
+  },
+  {
+    "model": "product.product",
+    "pk": 538,
+    "fields": {
+      "title": "Baked roll with mussels",
+      "image": null,
+      "price": 55.64,
+      "weight": 320,
+      "category": 1,
+      "ingredients": [
+        22,
+        14,
+        26
+      ]
+    }
+  },
+  {
+    "model": "product.product",
+    "pk": 539,
+    "fields": {
+      "title": "Black Cheesy Deluxe",
+      "image": null,
+      "price": 55.15,
+      "weight": 360,
+      "category": 5,
+      "ingredients": [
+        10,
+        15,
+        16,
+        9
+      ]
+    }
+  },
+  {
+    "model": "product.product",
+    "pk": 540,
+    "fields": {
+      "title": "Green Deluxe",
+      "image": null,
+      "price": 46.83,
+      "weight": 320,
+      "category": 3,
+      "ingredients": [
+        24,
+        14,
+        25
+      ]
+    }
+  },
+  {
+    "model": "product.product",
+    "pk": 541,
+    "fields": {
+      "title": "Bonito Deluxe",
+      "image": null,
+      "price": 36.01,
+      "weight": 340,
+      "category": 5,
+      "ingredients": [
+        17,
+        10,
+        14,
+        6,
+        20,
+        12
+      ]
+    }
+  },
+  {
+    "model": "product.product",
+    "pk": 542,
+    "fields": {
+      "title": "Cheezes Deluxe",
+      "image": null,
+      "price": 44.63,
+      "weight": 300,
+      "category": 1,
+      "ingredients": [
+        18,
+        11,
+        24,
+        8
+      ]
+    }
+  },
+  {
+    "model": "product.product",
+    "pk": 543,
+    "fields": {
+      "title": "Sunrise Deluxe",
+      "image": null,
+      "price": 48.74,
+      "weight": 340,
+      "category": 3,
+      "ingredients": [
+        19,
+        12,
+        8,
+        7
+      ]
+    }
+  },
+  {
+    "model": "product.product",
+    "pk": 544,
+    "fields": {
+      "title": "Tropical Deluxe",
+      "image": null,
+      "price": 39.13,
+      "weight": 360,
+      "category": 5,
+      "ingredients": [
+        8,
+        5,
+        10,
+        17,
+        13,
+        11
+      ]
+    }
+  },
+  {
+    "model": "product.product",
+    "pk": 545,
+    "fields": {
+      "title": "Megusta Deluxe",
+      "image": null,
+      "price": 51.69,
+      "weight": 320,
+      "category": 3,
+      "ingredients": [
+        7,
+        14,
+        22,
+        1,
+        4,
+        17
+      ]
+    }
+  },
+  {
+    "model": "product.product",
+    "pk": 546,
+    "fields": {
+      "title": "Yamakasi Deluxe",
+      "image": null,
+      "price": 54.02,
+      "weight": 300,
+      "category": 4,
+      "ingredients": [
+        24,
+        9,
+        25
+      ]
+    }
+  },
+  {
+    "model": "product.product",
+    "pk": 547,
+    "fields": {
+      "title": "Maguro Deluxe",
+      "image": null,
+      "price": 57.78,
+      "weight": 280,
+      "category": 2,
+      "ingredients": [
+        12,
+        15,
+        24,
+        17,
+        16
+      ]
+    }
+  },
+  {
+    "model": "product.product",
+    "pk": 548,
+    "fields": {
+      "title": "Mix Cheese Deluxe",
+      "image": null,
+      "price": 55.77,
+      "weight": 320,
+      "category": 3,
+      "ingredients": [
+        12,
+        24,
+        5
+      ]
+    }
+  },
+  {
+    "model": "product.product",
+    "pk": 549,
+    "fields": {
+      "title": "King Salmon Deluxe",
+      "image": null,
+      "price": 50.73,
+      "weight": 340,
+      "category": 5,
+      "ingredients": [
+        20,
+        23,
+        3
+      ]
+    }
+  },
+  {
+    "model": "product.product",
+    "pk": 550,
+    "fields": {
+      "title": "Vega Deluxe",
+      "image": null,
+      "price": 49.77,
+      "weight": 320,
+      "category": 3,
+      "ingredients": [
+        12,
+        18,
+        10
+      ]
+    }
+  },
+  {
+    "model": "product.product",
+    "pk": 551,
+    "fields": {
+      "title": "Red Dragon",
+      "image": null,
+      "price": 46.18,
+      "weight": 360,
+      "category": 4,
+      "ingredients": [
+        21,
+        17,
+        11,
+        7
+      ]
+    }
+  },
+  {
+    "model": "product.product",
+    "pk": 552,
+    "fields": {
+      "title": "Black Dragon",
+      "image": null,
+      "price": 53.52,
+      "weight": 320,
+      "category": 5,
+      "ingredients": [
+        16,
+        13,
+        24,
+        25,
+        23
+      ]
+    }
+  },
+  {
+    "model": "product.product",
+    "pk": 553,
+    "fields": {
+      "title": "Panda Dragon",
+      "image": null,
+      "price": 38.6,
+      "weight": 320,
+      "category": 3,
+      "ingredients": [
+        25,
+        23,
+        3,
+        2
+      ]
+    }
+  },
+  {
+    "model": "product.product",
+    "pk": 554,
+    "fields": {
+      "title": "Panko Avo-Tuna",
+      "image": null,
+      "price": 40.85,
+      "weight": 300,
+      "category": 2,
+      "ingredients": [
+        25,
+        21,
+        26,
+        16
+      ]
+    }
+  },
+  {
+    "model": "product.product",
+    "pk": 555,
+    "fields": {
+      "title": "Panko Like",
+      "image": null,
+      "price": 53.79,
+      "weight": 320,
+      "category": 2,
+      "ingredients": [
+        3,
+        13,
+        18,
+        14,
+        2
+      ]
+    }
+  },
+  {
+    "model": "product.product",
+    "pk": 556,
+    "fields": {
+      "title": "Panko Choice",
+      "image": null,
+      "price": 56.62,
+      "weight": 360,
+      "category": 5,
+      "ingredients": [
+        8,
+        9,
+        6,
+        21,
+        16,
+        2
+      ]
+    }
+  },
+  {
+    "model": "product.product",
+    "pk": 557,
+    "fields": {
+      "title": "Panko Panda",
+      "image": null,
+      "price": 39.96,
+      "weight": 300,
+      "category": 6,
+      "ingredients": [
+        23,
+        5,
+        22
+      ]
+    }
+  },
+  {
+    "model": "product.product",
+    "pk": 558,
+    "fields": {
+      "title": "Panko Tuna-Wakame",
+      "image": null,
+      "price": 46.04,
+      "weight": 360,
+      "category": 5,
+      "ingredients": [
+        9,
+        22,
+        6,
+        20,
+        11,
+        2
+      ]
+    }
+  },
+  {
+    "model": "product.product",
+    "pk": 559,
+    "fields": {
+      "title": "Futomaki Classic with shrimps",
+      "image": null,
+      "price": 47.96,
+      "weight": 320,
+      "category": 1,
+      "ingredients": [
+        10,
+        15,
+        25,
+        9,
+        14,
+        6
+      ]
+    }
+  },
+  {
+    "model": "product.product",
+    "pk": 560,
+    "fields": {
+      "title": "Futomaki Classic with surimi",
+      "image": null,
+      "price": 55.51,
+      "weight": 320,
+      "category": 6,
+      "ingredients": [
+        23,
+        4,
+        25,
+        2,
+        3,
+        19
+      ]
+    }
+  },
+  {
+    "model": "product.product",
+    "pk": 561,
+    "fields": {
+      "title": "Futomaki Classic with Unagi eel",
+      "image": null,
+      "price": 56.23,
+      "weight": 320,
+      "category": 1,
+      "ingredients": [
+        9,
+        21,
+        25,
+        1,
+        24,
+        7
+      ]
+    }
+  },
+  {
+    "model": "product.product",
+    "pk": 562,
+    "fields": {
+      "title": "Futomaki Vegan",
+      "image": null,
+      "price": 52.98,
+      "weight": 340,
+      "category": 4,
+      "ingredients": [
+        19,
+        6,
+        1,
+        20,
+        14
+      ]
+    }
+  },
+  {
+    "model": "product.product",
+    "pk": 563,
+    "fields": {
+      "title": "Futomaki with salmon",
+      "image": null,
+      "price": 52.45,
+      "weight": 300,
+      "category": 6,
+      "ingredients": [
+        24,
+        23,
+        13,
+        17,
+        16
+      ]
+    }
+  },
+  {
+    "model": "product.product",
+    "pk": 564,
+    "fields": {
+      "title": "Futomaki with baked salmon",
+      "image": null,
+      "price": 35.78,
+      "weight": 280,
+      "category": 4,
+      "ingredients": [
+        14,
+        5,
+        9,
+        17,
+        12,
+        3
+      ]
+    }
+  },
+  {
+    "model": "product.product",
+    "pk": 565,
+    "fields": {
+      "title": "Futomaki with tuna",
+      "image": null,
+      "price": 54.3,
+      "weight": 260,
+      "category": 1,
+      "ingredients": [
+        24,
+        2,
+        22,
+        4,
+        23
+      ]
+    }
+  },
+  {
+    "model": "product.product",
+    "pk": 566,
+    "fields": {
+      "title": "Futomaki with shrimps",
+      "image": null,
+      "price": 51.12,
+      "weight": 320,
+      "category": 3,
+      "ingredients": [
+        26,
+        2,
+        21,
+        15,
+        1
+      ]
+    }
+  },
+  {
+    "model": "product.product",
+    "pk": 567,
+    "fields": {
+      "title": "Futomaki tar-tar salmon",
+      "image": null,
+      "price": 51.21,
+      "weight": 260,
+      "category": 5,
+      "ingredients": [
+        11,
+        19,
+        24,
+        17,
+        9
+      ]
+    }
+  },
+  {
+    "model": "product.product",
+    "pk": 568,
+    "fields": {
+      "title": "Futomaki tar-tar tuna",
+      "image": null,
+      "price": 36.46,
+      "weight": 260,
+      "category": 1,
+      "ingredients": [
+        13,
+        7,
+        16
+      ]
+    }
+  },
+  {
+    "model": "product.product",
+    "pk": 569,
+    "fields": {
+      "title": "Hosomaki with oshinko",
+      "image": null,
+      "price": 40.46,
+      "weight": 320,
+      "category": 5,
+      "ingredients": [
+        1,
+        25,
+        11,
+        6
+      ]
+    }
+  },
+  {
+    "model": "product.product",
+    "pk": 570,
+    "fields": {
+      "title": "Hosomaki with kanpyo",
+      "image": null,
+      "price": 41.08,
+      "weight": 360,
+      "category": 5,
+      "ingredients": [
+        7,
+        3,
+        16,
+        5,
+        18
+      ]
+    }
+  },
+  {
+    "model": "product.product",
+    "pk": 571,
+    "fields": {
+      "title": "Hosomaki with cucumber",
+      "image": null,
+      "price": 35.02,
+      "weight": 280,
+      "category": 5,
+      "ingredients": [
+        13,
+        19,
+        6,
+        21,
+        16,
+        9
+      ]
+    }
+  },
+  {
+    "model": "product.product",
+    "pk": 572,
+    "fields": {
+      "title": "Hosomaki with crab",
+      "image": null,
+      "price": 49.53,
+      "weight": 320,
+      "category": 6,
+      "ingredients": [
+        13,
+        24,
+        8
+      ]
+    }
+  },
+  {
+    "model": "product.product",
+    "pk": 573,
+    "fields": {
+      "title": "Hosomaki with avocado",
+      "image": null,
+      "price": 46.83,
+      "weight": 260,
+      "category": 3,
+      "ingredients": [
+        20,
+        10,
+        13
+      ]
+    }
+  },
+  {
+    "model": "product.product",
+    "pk": 574,
+    "fields": {
+      "title": "Hosomaki with shrimps",
+      "image": null,
+      "price": 38.05,
+      "weight": 300,
+      "category": 3,
+      "ingredients": [
+        3,
+        12,
+        1
+      ]
+    }
+  },
+  {
+    "model": "product.product",
+    "pk": 575,
+    "fields": {
+      "title": "Hosomaki with tuna",
+      "image": null,
+      "price": 50.86,
+      "weight": 360,
+      "category": 4,
+      "ingredients": [
+        1,
+        13,
+        20,
+        24,
+        7
+      ]
+    }
+  },
+  {
+    "model": "product.product",
+    "pk": 576,
+    "fields": {
+      "title": "Hosomaki with eel",
+      "image": null,
+      "price": 47.09,
+      "weight": 280,
+      "category": 6,
+      "ingredients": [
+        10,
+        24,
+        21,
+        1,
+        23
+      ]
+    }
+  },
+  {
+    "model": "product.product",
+    "pk": 577,
+    "fields": {
+      "title": "Hosomaki with wakame",
+      "image": null,
+      "price": 48.74,
+      "weight": 260,
+      "category": 4,
+      "ingredients": [
+        10,
+        20,
+        12,
+        25
+      ]
+    }
+  },
+  {
+    "model": "product.product",
+    "pk": 578,
+    "fields": {
+      "title": "Nigiri with grilled salmon",
+      "image": null,
+      "price": 37.49,
+      "weight": 260,
+      "category": 3,
+      "ingredients": [
+        10,
+        19,
+        3,
+        17,
+        5,
+        25
+      ]
+    }
+  },
+  {
+    "model": "product.product",
+    "pk": 579,
+    "fields": {
+      "title": "Nigiri with prawn",
+      "image": null,
+      "price": 37.64,
+      "weight": 340,
+      "category": 4,
+      "ingredients": [
+        19,
+        26,
+        17,
+        1
+      ]
+    }
+  },
+  {
+    "model": "product.product",
+    "pk": 580,
+    "fields": {
+      "title": "Nigiri with eel",
+      "image": null,
+      "price": 40.98,
+      "weight": 320,
+      "category": 1,
+      "ingredients": [
+        22,
+        20,
+        5,
+        26
+      ]
+    }
+  },
+  {
+    "model": "product.product",
+    "pk": 581,
+    "fields": {
+      "title": "Nigiri with avocado",
+      "image": null,
+      "price": 41.56,
+      "weight": 260,
+      "category": 6,
+      "ingredients": [
+        20,
+        11,
+        7,
+        14,
+        24,
+        12
+      ]
+    }
+  },
+  {
+    "model": "product.product",
+    "pk": 582,
+    "fields": {
+      "title": "Nigiri with tuna",
+      "image": null,
+      "price": 49.68,
+      "weight": 300,
+      "category": 5,
+      "ingredients": [
+        21,
+        5,
+        3,
+        10,
+        23,
+        14
+      ]
+    }
+  },
+  {
+    "model": "product.product",
+    "pk": 583,
+    "fields": {
+      "title": "Gunkan with shrimps",
+      "image": null,
+      "price": 39.76,
+      "weight": 260,
+      "category": 4,
+      "ingredients": [
+        4,
+        5,
+        16,
+        23
+      ]
+    }
+  },
+  {
+    "model": "product.product",
+    "pk": 584,
+    "fields": {
+      "title": "Gunkan with wakame",
+      "image": null,
+      "price": 36.14,
+      "weight": 260,
+      "category": 6,
+      "ingredients": [
+        4,
+        1,
+        26
+      ]
+    }
+  },
+  {
+    "model": "product.product",
+    "pk": 585,
+    "fields": {
+      "title": "Gunkan with eel",
+      "image": null,
+      "price": 40.57,
+      "weight": 360,
+      "category": 4,
+      "ingredients": [
+        22,
+        25,
+        19
+      ]
+    }
+  },
+  {
+    "model": "product.product",
+    "pk": 586,
+    "fields": {
+      "title": "Set Sakura 40 pcs",
+      "image": null,
+      "price": 58.06,
+      "weight": 280,
+      "category": 1,
+      "ingredients": [
+        2,
+        15,
+        18,
+        5,
+        13
+      ]
+    }
+  },
+  {
+    "model": "product.product",
+    "pk": 587,
+    "fields": {
+      "title": "Set \"Sunset\" 40 pcs",
+      "image": null,
+      "price": 56.24,
+      "weight": 340,
+      "category": 4,
+      "ingredients": [
+        14,
+        19,
+        15,
+        9,
+        23
+      ]
+    }
+  },
+  {
+    "model": "product.product",
+    "pk": 588,
+    "fields": {
+      "title": "Set King 40 pcs",
+      "image": null,
+      "price": 45.84,
+      "weight": 320,
+      "category": 2,
+      "ingredients": [
+        15,
+        16,
+        22,
+        23,
+        18,
+        21
+      ]
+    }
+  },
+  {
+    "model": "product.product",
+    "pk": 589,
+    "fields": {
+      "title": "Set Euphoria 40 pcs",
+      "image": null,
+      "price": 56.97,
+      "weight": 280,
+      "category": 6,
+      "ingredients": [
+        8,
+        11,
+        15,
+        17,
+        26
+      ]
+    }
+  },
+  {
+    "model": "product.product",
+    "pk": 590,
+    "fields": {
+      "title": "Set New Mix 32 pcs",
+      "image": null,
+      "price": 50.95,
+      "weight": 280,
+      "category": 4,
+      "ingredients": [
+        8,
+        13,
+        19,
+        9,
+        16,
+        10
+      ]
+    }
+  },
+  {
+    "model": "product.product",
+    "pk": 591,
+    "fields": {
+      "title": "Set Futago 56 pcs",
+      "image": null,
+      "price": 56.45,
+      "weight": 260,
+      "category": 1,
+      "ingredients": [
+        7,
+        10,
+        24,
+        8,
+        2,
+        16
+      ]
+    }
+  },
+  {
+    "model": "product.product",
+    "pk": 592,
+    "fields": {
+      "title": "Set Hokkaido 36 pcs",
+      "image": null,
+      "price": 47.07,
+      "weight": 260,
+      "category": 2,
+      "ingredients": [
+        19,
+        1,
+        8,
+        15,
+        16,
+        20
+      ]
+    }
+  },
+  {
+    "model": "product.product",
+    "pk": 593,
+    "fields": {
+      "title": "Set Hunter 38 pcs",
+      "image": null,
+      "price": 49.18,
+      "weight": 340,
+      "category": 3,
+      "ingredients": [
+        20,
+        3,
+        14,
+        7,
+        15
+      ]
+    }
+  },
+  {
+    "model": "product.product",
+    "pk": 594,
+    "fields": {
+      "title": "Set Panko 32 pcs",
+      "image": null,
+      "price": 49.18,
+      "weight": 340,
+      "category": 3,
+      "ingredients": [
+        20,
+        3,
+        14,
+        7,
+        15
+      ]
+    }
+  }
+]

@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container">
+  <div class="row">
+    <div class="col-md-3 pr-md-4">
+      <div class="menu-wrapper">
+        {% block sidebar %}
+          {% include "includes/sidebar.html" %}
+        {% endblock sidebar %}
+      </div>
+    </div>
+
+    <div class="col-md-9">
+      {% for category in categories %}
+        <section id="category-{{ category.id }}" class="mb-5">
+          <h2 class="mt-4">{{ category.title }}</h2>
+          <br>
+          <div class="row">
+            {% for product in products %}
+              <div class="col-lg-6 col-xl-6 mb-4">
+                <div class="product-card d-flex align-items-center p-3 h-100"
+                     onclick="openProductModal({{ product.id }})">
+                  <div class="flex-grow-1">
+                    <h5 class="mb-1">{{ product.title }}</h5>
+                    <p class="mb-2 text-muted small">
+                      {% for ingredient in product.ingredients.all %}
+                        {{ ingredient.name }}{% if not forloop.last %}, {% endif %}
+                      {% endfor %}
+                    </p>
+                    <div class="d-flex align-items-center">
+                      {% if product.weight %}
+                        <span class="badge-custom-weight mr-2">{{ product.weight }} g</span>
+                      {% endif %}
+                    </div>
+                    <strong class="mt-2 d-block">{{ product.price }} zł</strong>
+                  </div>
+                </div>
+              </div>
+            {% endfor %}
+          </div>
+        </section>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+<div style="position: fixed; bottom: 20px; right: 20px; z-index: 1050;">
+  <button id="viewCartSummary" onclick="loadCartSidebar()" class="btn btn-outline-dark">
+    🛒 View Cart
+  </button>
+</div>
+{% endblock %}

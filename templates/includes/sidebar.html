@@ -1,0 +1,9 @@
+<div class="sidebar-wrapper">
+  <div class="sidebar-scroll">
+    <ul>
+      {% for category in categories %}
+        <li><a href="#category-{{ category.id }}">{{ category.title }}</a></li>
+      {% endfor %}
+    </ul>
+  </div>
+</div>
