@@ -24,8 +24,6 @@ SECRET_KEY = os.environ.get(
     "DJANGO_SECRET_KEY",
     "django-insecure-=5_(gf4*uoab&n7#3g&gmerjkm+9%mr1r#n65@nt%nzn$&o3u&"
 )
-DEBUG = False
-
 
 # Application definition
 
