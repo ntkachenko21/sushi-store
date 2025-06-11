@@ -293,25 +293,44 @@ document.addEventListener("DOMContentLoaded", function () {
   const pickupSummary = document.getElementById("pickupTimeSummary");
 
   function generateTimeWindows() {
-    const now = new Date();
-    now.setMinutes(now.getMinutes() + 30);
+  const now = new Date();
+  now.setMinutes(now.getMinutes() + 30);
 
-    const roundedMinutes = Math.ceil(now.getMinutes() / 10) * 10;
-    now.setMinutes(roundedMinutes, 0, 0);
+  const roundedMinutes = Math.ceil(now.getMinutes() / 10) * 10;
+  now.setMinutes(roundedMinutes, 0, 0);
 
-    const options = [];
-    for (let i = 0; i < 30; i++) {
-      const start = new Date(now.getTime() + i * 10 * 60000);
-      const end = new Date(start.getTime() + 10 * 60000);
+  const options = [];
+  let count = 0;
+  let current = new Date(now);
 
-      const format = (d) => d.toTimeString().slice(0, 5);
-      const label = `${format(start)} - ${format(end)}`;
+  while (count < 30) {
+    const start = new Date(current);
+    const end = new Date(start.getTime() + 10 * 60000);
 
-      options.push(label);
+    const startHours = start.getHours();
+    if (startHours >= 0 && startHours < 8) {
+      start.setHours(8, 0, 0, 0);
+      current = new Date(start);
+      continue;
     }
 
-    return options;
+    if (end.getHours() === 0 && end.getMinutes() === 0) {
+      current.setDate(current.getDate() + 1);
+      current.setHours(8, 0, 0, 0);
+      continue;
+    }
+
+    const format = (d) => d.toTimeString().slice(0, 5);
+    const label = `${format(start)} - ${format(end)}`;
+
+    options.push(label);
+
+    current = new Date(start.getTime() + 10 * 60000);
+    count++;
   }
+
+  return options;
+}
 
   function populateSchedule() {
     const windows = generateTimeWindows();
