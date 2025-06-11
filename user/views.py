@@ -28,22 +28,6 @@ class LoginModalView(View):
         )
 
 
-class CustomRegisterView(CreateView):
-    template_name = "product/index.html"
-    form_class = CustomUserCreationForm
-    success_url = reverse_lazy("product:index")
-
-    def form_valid(self, form):
-        user = form.save()
-        login(self.request, user)
-        return super().form_valid(form)
-
-    def form_invalid(self, form):
-        return self.render_to_response(
-            self.get_context_data(form=form, show_signup_modal=True)
-        )
-
-
 class SignupModalView(View):
     def get(self, request):
         form = CustomUserCreationForm()
