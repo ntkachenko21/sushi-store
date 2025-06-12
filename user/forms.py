@@ -1,4 +1,5 @@
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
+
 from user.models import CustomUser
 import uuid
 
@@ -24,7 +25,6 @@ class CustomUserCreationForm(UserCreationForm):
 
     def save(self, commit=True):
         user = super().save(commit=False)
-
         base_username = self.cleaned_data["email"].split("@")[0]
         username = base_username
 

@@ -1,13 +1,14 @@
-from django.urls import reverse_lazy
-from django.views.generic import CreateView, DetailView
+from django.views.generic import DetailView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import render
 from django.contrib.auth import login
 from django.views import View
 from django_htmx.http import HttpResponseClientRefresh
 
+from product.models import Product
 from user.forms import CustomUserCreationForm, CustomLoginForm
 from user.models import CustomUser
+from checkout.models import Cart, CartItem
 
 
 class LoginModalView(View):
@@ -40,6 +41,30 @@ class SignupModalView(View):
         if form.is_valid():
             user = form.save()
             login(request, user)
+
+            session_cart = request.session.get("cart", {})
+
+            if not session_cart:
+                pass
+            else:
+                cart = Cart.objects.create()
+                user.cart = cart
+                user.save()
+
+                product_ids = session_cart.keys()
+                products = Product.objects.filter(id__in=product_ids)
+
+                for product in products:
+                    quantity = session_cart.get(str(product.id))
+                    if quantity <= 0: continue
+                    cart_item = CartItem.objects.create(
+                        cart=cart,
+                        product=product,
+                        quantity=quantity
+                    )
+
+                    cart_item.save()
+
             return HttpResponseClientRefresh()
         return render(
             request, "includes/modals/signup_modal.html", {"form": form}
