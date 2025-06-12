@@ -19,7 +19,7 @@ class CartSidebarView(View):
             "checkout/sidebar.html",
             {
                 "cart_items": cart["cart_items"],
-                "total_price": f"{cart["total_price"]:.2f}"
+                "total_price": f"{cart['total_price']:.2f}"
             },
             request=request
         )

@@ -3,6 +3,8 @@ from django.http import HttpRequest
 from product.models import Product
 
 
+#ToDo: fix display button cart
+
 def get_user_cart(request: HttpRequest):
     cart_items, total_price = [], 0
 
