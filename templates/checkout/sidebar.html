@@ -7,23 +7,30 @@
   <div class="cart-sidebar-body p-3">
     {% if cart_items %}
       {% for item in cart_items %}
-        <div class="d-flex justify-content-between align-items-center mb-3">
+        <div class="cart-item d-flex justify-content-between align-items-center mb-3">
           <div>
             <strong>{{ item.product.title }}</strong><br>
             <small>{{ item.quantity }} × {{ item.product.price }} zł</small>
           </div>
           <div class="cart-qty-controls d-flex align-items-center">
-            <button class="btn-cart-qty btn-cart-decrease" data-product-id="{{ item.product.id }}">−</button>
-            <span class="mx-2">{{ item.quantity }}</span>
-            <button class="btn-cart-qty btn-cart-increase" data-product-id="{{ item.product.id }}">+</button>
+            <button class="btn-cart-qty btn-cart-decrease" data-product-id="{{ item.product.id }}" aria-label="Decrease quantity">
+              <svg width="20" height="20" viewBox="0 0 20 20"><rect x="4" y="9" width="12" height="2" rx="1" fill="currentColor"/></svg>
+            </button>
+            <span class="cart-qty-number mx-2">{{ item.quantity }}</span>
+            <button class="btn-cart-qty btn-cart-increase" data-product-id="{{ item.product.id }}" aria-label="Increase quantity">
+              <svg width="20" height="20" viewBox="0 0 20 20">
+                <rect x="9" y="4" width="2" height="12" rx="1" fill="currentColor"/>
+                <rect x="4" y="9" width="12" height="2" rx="1" fill="currentColor"/>
+              </svg>
+            </button>
           </div>
-          <span>{{ item.total_price|floatformat:2 }} zł</span>
+          <span> {{ item.total_price|floatformat:2 }} zł</span>
         </div>
       {% endfor %}  
 
       <div class="d-flex justify-content-between font-weight-bold border-top pt-3 mt-3">
         <span>Total:</span>
-        <span>{{ total_price }} zł</span>
+        <span class="cart-item-total">{{ total_price }} zł</span>
       </div>
 
       <div class="text-center mt-4">
