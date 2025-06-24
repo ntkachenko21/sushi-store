@@ -353,9 +353,28 @@ document.addEventListener("DOMContentLoaded", function () {
   if (deliverySelect) {
     populateSchedule();
   }
+
+  const viewCartBtn = document.querySelector("#viewCartSummary");
+  if (viewCartBtn) {
+    const quantity = parseInt(viewCartBtn.dataset.cartQuantity || "0");
+    const total = viewCartBtn.dataset.cartTotal || "0";
+    updateCartSummary(quantity, total);
+  }
 });
 
 // === CART: loading and management ===
+// === Update button View Cart ===
+function updateCartSummary(quantity, totalPrice) {
+  const viewCartBtn = document.querySelector("#viewCartSummary");
+  if (viewCartBtn) {
+    if (quantity > 0) {
+      viewCartBtn.innerHTML = `In the cart: ${quantity} <span>${totalPrice}</span>`;
+    } else {
+      viewCartBtn.innerHTML = "🛒 View Cart";
+    }
+  }
+}
+
 function toggleCartSidebar(show = true) {
   const sidebar = document.querySelector("#cartSidebar");
   const backdrop = document.querySelector("#cartBackdrop");
@@ -431,14 +450,6 @@ document.addEventListener("click", function (e) {
       console.error("Add to cart error:", err);
     });
 });
-
-// === Update button View Cart ===
-function updateCartSummary(quantity, totalPrice) {
-  const viewCartBtn = document.querySelector("#viewCartSummary");
-  if (viewCartBtn) {
-    viewCartBtn.innerHTML = `In the cart: ${quantity} <span>${totalPrice}</span>`;
-  }
-}
 
 // === Getting CSRF ===
 function getCookie(name) {

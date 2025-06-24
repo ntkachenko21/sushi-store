@@ -46,8 +46,18 @@
 </div>
 
 <div style="position: fixed; bottom: 20px; right: 20px; z-index: 1050;">
-  <button id="viewCartSummary" onclick="loadCartSidebar()" class="btn btn-outline-dark">
-    🛒 View Cart
+  <button
+      id="viewCartSummary"
+      onclick="loadCartSidebar()"
+      class="btn btn-outline-dark"
+      data-cart-quantity="{{ cart.cart_quantity }}"
+      data-cart-total="{{ cart.cart_total_price }}"
+  >
+    {% if cart.cart_quantity > 0 %}
+      In the cart: {{ cart.cart_quantity }} {{ cart.cart_total_price|floatformat:"0" }} zł
+    {% else %}
+      🛒 View Cart
+    {% endif %}
   </button>
 </div>
 {% endblock %}

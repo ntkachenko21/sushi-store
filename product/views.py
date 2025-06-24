@@ -1,6 +1,7 @@
 from django.views import generic
 from django.views.generic import ListView
 
+from checkout.utils import get_user_cart
 from product.models import Product, Category
 
 
@@ -13,6 +14,12 @@ class ProductListView(ListView):
         context = super().get_context_data(**kwargs)
         context["categories"] = Category.objects.all()
         context["products"] = Product.objects.prefetch_related("ingredients")
+        cart_data = get_user_cart(self.request)
+        context["cart"] = {
+            "cart_quantity": cart_data.get("total_quantity"),
+            "cart_total_price": cart_data.get("total_price")
+        }
+        print(context["cart"])
 
         return context
 

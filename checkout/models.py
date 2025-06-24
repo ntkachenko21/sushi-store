@@ -15,6 +15,7 @@ class Cart(models.Model):
     def __str__(self):
         return f"Cart ({self.session_key})"
 
+    @property
     def total_price(self):
         return sum(item.total_price() for item in self.items.all())
 
