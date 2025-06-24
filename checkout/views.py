@@ -3,7 +3,9 @@ import json
 from django.shortcuts import render
 from django.template.loader import render_to_string
 from django.http import JsonResponse
+from django.utils.decorators import method_decorator
 from django.views import View
+from django.views.decorators.csrf import csrf_exempt
 
 from checkout.models import CartItem, Cart
 from product.models import Product
@@ -102,3 +104,64 @@ class AddToCartView(View):
                 "total_price": f"{total_price:.0f} zł",
             }
         )
+
+@method_decorator(csrf_exempt, name='dispatch')
+class UpdateCartItemView(View):
+    def post(self, request):
+        try:
+            data = json.loads(request.body)
+            product_id = str(data.get("product_id"))
+            delta = int(data.get("delta", 0))
+        except (ValueError, json.JSONDecodeError):
+            return JsonResponse({"success": False, "error": "Invalid data"}, status=400)
+
+        try:
+            product = Product.objects.get(pk=product_id)
+        except Product.DoesNotExist:
+            return JsonResponse({"success": False, "error": "Product not found"}, status=404)
+
+        if request.user.is_authenticated:
+            cart = getattr(request.user, "cart", None)
+            if not cart:
+                cart = Cart.objects.create(session_key=request.session.session_key)
+                request.user.cart = cart
+                request.user.save()
+
+            cart_item, created = CartItem.objects.get_or_create(cart=cart, product=product)
+
+            if created:
+                cart_item.quantity = max(1, delta)
+            else:
+                cart_item.quantity += delta
+
+            if cart_item.quantity <= 0:
+                cart_item.delete()
+            else:
+                cart_item.save()
+
+            cart_items = cart.items.all()
+            total_quantity = sum(item.quantity for item in cart_items)
+            total_price = sum(item.product.price * item.quantity for item in cart_items)
+
+        else:
+            cart = request.session.get("cart", {})
+            current_qty = cart.get(product_id, 0)
+            new_qty = current_qty + delta
+
+            if new_qty > 0:
+                cart[product_id] = new_qty
+            elif product_id in cart:
+                del cart[product_id]
+
+            request.session["cart"] = cart
+
+            product_ids = cart.keys()
+            products = Product.objects.filter(id__in=product_ids)
+            total_price = sum(product.price * cart[str(product.id)] for product in products)
+            total_quantity = sum(cart.values())
+
+        return JsonResponse({
+            "success": True,
+            "total_quantity": total_quantity,
+            "total_price": f"{total_price:.0f} zł",
+        })

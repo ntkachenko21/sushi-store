@@ -12,6 +12,11 @@
             <strong>{{ item.product.title }}</strong><br>
             <small>{{ item.quantity }} × {{ item.product.price }} zł</small>
           </div>
+          <div class="cart-qty-controls d-flex align-items-center">
+            <button class="btn-cart-qty btn-cart-decrease" data-product-id="{{ item.product.id }}">−</button>
+            <span class="mx-2">{{ item.quantity }}</span>
+            <button class="btn-cart-qty btn-cart-increase" data-product-id="{{ item.product.id }}">+</button>
+          </div>
           <span>{{ item.total_price|floatformat:2 }} zł</span>
         </div>
       {% endfor %}  
